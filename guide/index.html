@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>利用ガイドライン（Q&amp;A）｜ 三号スタジオ</title>
+<meta name="description" content="三号スタジオの利用規約を、やさしくまとめた参考資料です。">
+<style>
+
+:root {
+  color-scheme: light dark;
+  --bg:        #ffffff;
+  --bg-soft:   #f6f8fa;
+  --bg-sunk:   #eef1f4;
+  --fg:        #1f2328;
+  --fg-muted:  #59636e;
+  --line:      #d8dee4;
+  --line-soft: #e6eaef;
+  --accent:    #0a58a8;
+  --accent-bg: #eaf2fb;
+  --radius: 10px;
+  --measure: 44rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:        #0f1216;
+    --bg-soft:   #171b21;
+    --bg-sunk:   #1d222a;
+    --fg:        #e4e9ee;
+    --fg-muted:  #9aa4af;
+    --line:      #2e353e;
+    --line-soft: #242a32;
+    --accent:    #7cb7f5;
+    --accent-bg: #172231;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Sans",
+               "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--fg);
+  background: var(--bg);
+  overflow-wrap: break-word;
+  word-break: normal;
+  line-break: strict;
+}
+
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+.bar-inner {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 3.4rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.98rem;
+  letter-spacing: 0.01em;
+  color: var(--fg);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.brand img { width: 24px; height: 24px; display: block; flex: none; }
+.brand:hover { color: var(--accent); }
+
+.bar nav { margin-left: auto; }
+
+.bar nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.bar nav a {
+  display: block;
+  padding: 0.35rem 0.7rem;
+  border-radius: 7px;
+  font-size: 0.9rem;
+  color: var(--fg-muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.bar nav a:hover { background: var(--bg-soft); color: var(--fg); }
+.bar nav a[aria-current="page"] {
+  color: var(--accent);
+  background: var(--accent-bg);
+  font-weight: 600;
+}
+
+.langs {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin-left: 0.6rem;
+  padding-left: 0.8rem;
+  border-left: 1px solid var(--line);
+}
+.langs a {
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  font-size: 0.84rem;
+  color: var(--fg-muted);
+  text-decoration: none;
+}
+.langs a:hover { background: var(--bg-soft); color: var(--fg); }
+.langs a[aria-current="true"] { color: var(--fg); font-weight: 700; }
+.langs span {   padding: 0.25rem 0.55rem;
+  font-size: 0.84rem;
+  color: var(--fg-muted);
+  opacity: 0.45;
+}
+
+.menu { display: none; margin-left: auto; }
+.menu > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--fg-muted);
+  font-size: 0.85rem;
+  user-select: none;
+}
+.menu > summary::-webkit-details-marker { display: none; }
+.menu > summary::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 0.72em;
+  margin-right: 0.45rem;
+  vertical-align: -0.05em;
+  border-top: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  background: linear-gradient(currentColor, currentColor) center/100% 2px no-repeat;
+}
+.menu[open] > summary { background: var(--bg-soft); color: var(--fg); }
+
+.menu-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  padding: 0.5rem 1.1rem 0.9rem;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+.menu-panel ul { list-style: none; margin: 0; padding: 0; }
+.menu-panel li { margin: 0; }
+.menu-panel a {
+  display: block;
+  padding: 0.6rem 0.4rem;
+  border-radius: 7px;
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.menu-panel a:hover { background: var(--bg-soft); }
+.menu-panel a[aria-current="page"] { color: var(--accent); font-weight: 600; }
+.menu-panel .langs {
+  margin: 0.5rem 0 0;
+  padding: 0.6rem 0 0;
+  border-left: 0;
+  border-top: 1px solid var(--line-soft);
+}
+
+@media (max-width: 54rem) {
+  .bar nav { display: none; }
+    .bar-inner > .langs { display: none; }
+  .menu { display: block; }
+}
+
+
+main {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 2.2rem 1.1rem 5rem;
+}
+
+h1 {
+  font-size: 1.55rem;
+  line-height: 1.5;
+  margin: 0 0 1.2rem;
+  letter-spacing: 0.01em;
+}
+
+h2 {
+  font-size: 1.24rem;
+  font-weight: 700;
+  line-height: 1.6;
+  margin: 2.5rem 0 1.1rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--line-soft);
+  scroll-margin-top: 4.2rem;   }
+
+h3 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  margin: 3.4rem 0 0.2rem;
+  color: var(--accent);
+  scroll-margin-top: 4.2rem;
+}
+
+p { margin: 0.85rem 0; }
+
+a { color: var(--accent); text-underline-offset: 0.18em; }
+a:hover { text-decoration: none; }
+
+ol { padding-left: 1.7rem; margin: 0.85rem 0; }
+ol ol { padding-left: 1.5rem; margin: 0.5rem 0; list-style-type: decimal; }
+li { margin: 0.5rem 0; }
+
+hr { border: 0; border-top: 1px solid var(--line-soft); margin: 2.5rem 0; }
+hr + h2 { border-top: 0; padding-top: 0; margin-top: 2.5rem; }
+
+strong { font-weight: 700; }
+
+.meta { overflow-x: auto; margin: 1.2rem 0 0; -webkit-overflow-scrolling: touch; }
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  font-size: 0.94rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+th, td {
+  border-bottom: 1px solid var(--line-soft);
+  padding: 0.6rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.7;
+}
+tr:last-child th, tr:last-child td { border-bottom: 0; }
+th { background: var(--bg-soft); white-space: nowrap; font-weight: 600; }
+.meta td:first-child {
+  white-space: nowrap;
+  background: var(--bg-soft);
+  font-weight: 600;
+  color: var(--fg-muted);
+  border-right: 1px solid var(--line-soft);
+  width: 1%;
+}
+
+blockquote {
+  margin: 1.2rem 0;
+  padding: 0.2rem 0 0.2rem 1.1rem;
+  border-left: 3px solid var(--line);
+  color: var(--fg-muted);
+}
+blockquote p { margin: 0.5rem 0; }
+
+.notice {
+  margin: 1.1rem 0 0;
+  padding: 0.85rem 1rem;
+  background: var(--accent-bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.notice p { margin: 0; }
+
+ul:has(> li.row) {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 1.1rem;
+  row-gap: 0.35rem;
+  list-style: none;
+  padding-left: 1.7rem;
+  margin: 0.85rem 0;
+}
+li.row { display: contents; }
+li.row .pad { display: none; }
+@media (max-width: 34rem) {
+  ul:has(> li.row) { display: block; }
+  li.row { display: block; margin: 0.7rem 0; }
+  li.row .label { display: block; font-weight: 600; }
+}
+
+.qa { margin: 0; }
+h4.q {
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--fg);
+  margin: 2.4rem 0 0.55rem;
+  scroll-margin-top: 4.2rem;
+}
+.qa p { margin: 0.25rem 0; }
+.qa ul { margin: 0.5rem 0; }
+.qa ul + p { margin-top: 0.5rem; }
+
+main > p:last-child {
+  margin-top: 3rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line-soft);
+  font-size: 0.88rem;
+  color: var(--fg-muted);
+}
+
+nav.toc {
+  margin: 2rem 0 0;
+  padding: 1.1rem 1.3rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+}
+nav.toc > p { margin: 0 0 0.6rem; font-weight: 700; font-size: 0.95rem; }
+nav.toc ol { margin: 0; padding-left: 0; list-style: none; }
+nav.toc li { margin: 0.3rem 0; }
+nav.toc a { color: var(--fg); text-decoration: none; }
+nav.toc a:hover { color: var(--accent); text-decoration: underline; }
+
+.pagelink {
+  margin: 1.1rem 0 0;
+  padding: 0.85rem 1rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+}
+.pagelink p { margin: 0; }
+
+.cards { list-style: none; margin: 1.2rem 0 0; padding: 0; }
+.cards li { margin: 0.6rem 0; }
+.cards a {
+  display: block;
+  padding: 0.9rem 1.1rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  color: var(--fg);
+  text-decoration: none;
+  font-weight: 600;
+}
+.cards a:hover { border-color: var(--accent); color: var(--accent); }
+.cards .sub { display: block; font-weight: 400; font-size: 0.88rem; color: var(--fg-muted); margin-top: 0.15rem; }
+
+.dates { color: var(--fg-muted); font-size: 0.92rem; margin: 0.3rem 0 0; }
+
+footer {
+  border-top: 1px solid var(--line-soft);
+  margin-top: 4rem;
+  padding: 1.4rem 1.1rem 3rem;
+  font-size: 0.88rem;
+  color: var(--fg-muted);
+}
+footer .footer-inner { max-width: var(--measure); margin: 0 auto; }
+footer p { margin: 0.35rem 0; }
+footer a { color: var(--fg-muted); }
+
+
+@media print {
+  .bar, .menu, .pagelink { display: none !important; }
+  body { color: #000; background: #fff; font-size: 10.5pt; line-height: 1.7; }
+  main { max-width: none; padding: 0; }
+  h2 { break-after: avoid; page-break-after: avoid; font-size: 12pt; }
+  li, p, tr { break-inside: avoid; page-break-inside: avoid; }
+  .meta { overflow-x: visible; }
+  table, .notice, nav.toc { border: 1px solid #999; }
+  th, .meta td:first-child { background: transparent; }
+  a { color: #000; text-decoration: none; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; }
+  footer { border-top: 1px solid #999; }
+}
+</style>
+</head>
+<body>
+<header class="bar">
+<div class="bar-inner">
+<a class="brand" href="/"><img src="/assets/mark.png" alt="" width="24" height="24">三号スタジオ ライセンス</a>
+<nav aria-label="pages">
+<ul>
+<li><a href="/asset/">アセット利用規約</a></li>
+<li><a href="/app/">アプリケーション利用規約</a></li>
+<li><a href="/guide/" aria-current="page">ガイドライン（Q&A）</a></li>
+</ul>
+</nav>
+<div class="langs">
+<a href="/guide/" aria-current="true">日本語</a>
+<a href="/guide/en/">English</a>
+</div>
+<details class="menu">
+<summary>メニュー</summary>
+<div class="menu-panel">
+<ul>
+<li><a href="/asset/">アセット利用規約</a></li>
+<li><a href="/app/">アプリケーション利用規約</a></li>
+<li><a href="/guide/" aria-current="page">ガイドライン（Q&A）</a></li>
+</ul>
+<div class="langs">
+<a href="/guide/" aria-current="true">日本語</a>
+<a href="/guide/en/">English</a>
+</div>
+</div>
+</details>
+</div>
+</header>
+<main>
+<h1>三号スタジオ 利用ガイドライン（Q&amp;A）</h1>
+<p>これは利用規約をやさしくまとめた参考資料です。</p>
+<p>正式な内容は、それぞれの利用規約が優先します。</p>
+<ul>
+<li class="row"><span class="label">アプリケーション利用規約</span><span class="pad">　</span><a href="https://legal.sangoustudio.com/app/">https://legal.sangoustudio.com/app/</a></li>
+<li class="row"><span class="label">アセット利用規約</span><span class="pad">　　　　　</span><a href="https://legal.sangoustudio.com/asset/">https://legal.sangoustudio.com/asset/</a></li>
+</ul>
+<hr>
+<h2>2つのルールがあります</h2>
+<p>同じ商品の中でも、<strong>アプリ</strong>（Windows向けの実行ファイル）と<strong>アセット</strong>（3Dモデル、テクスチャ、マテリアル、Unity用パッケージなど）では、適用されるルールが違います。</p>
+<p><strong>特に「改変」が正反対です。</strong> アセットは改変できますが、アプリは改変できません。</p>
+<div class="meta">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>アセット</th>
+<th>アプリ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>商用利用</td>
+<td>○</td>
+<td>○</td>
+</tr>
+<tr>
+<td>配信・動画・SNS投稿</td>
+<td>○</td>
+<td>○</td>
+</tr>
+<tr>
+<td>改変</td>
+<td><strong>○</strong></td>
+<td><strong>×</strong></td>
+</tr>
+<tr>
+<td>再配布</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>譲渡・転売・貸与</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>1件の購入で使えるのは</td>
+<td>1名</td>
+<td>1名</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>アプリが同梱されていない商品では、「アプリのこと」は読み飛ばしてください。</p>
+<p><strong>■ ご注意</strong></p>
+<p>VR機器を装着して使う場合は、周囲に十分な空間を確保してください。</p>
+<p>体調に異変を感じたら、すぐに使用をやめてください。</p>
+<hr>
+<h2>共通のこと</h2>
+<h3>使えること</h3>
+<div class="qa">
+<h4 class="q">Q. 商用利用できますか？</h4>
+<p>A. できます。収益化した配信や動画、広告、受託制作、イベント、会社の業務。どれも大丈夫です。</p>
+<p>ただし、受託制作などで成果物をお渡しする場合、<strong>そこにアプリやアセットのデータそのものを含めることはできません。</strong></p>
+</div>
+<div class="qa">
+<h4 class="q">Q. 撮った画像や作ったデータの権利は、誰のものですか？</h4>
+<p>A. あなたのものです。三号スタジオは、あなたが作ったものに権利を主張しません。アプリはあくまで道具です。</p>
+<p>ただし、次の2つは別に扱われます。</p>
+<ul>
+<li>アプリにもともと入っている素材やひな形を、そのまま含んでいる部分</li>
+<li>画像や映像に写っている、三号スタジオのアセットそのもの</li>
+</ul>
+<p>写っているアセットの権利は三号スタジオにありますが、<strong>それを含む画像や映像を公開・販売することはできます。</strong></p>
+</div>
+<div class="qa">
+<h4 class="q">Q. 会社で3人使いたいのですが？</h4>
+<p>A. 3人分ご購入ください。アプリもアセットも、1件のご購入につきお使いいただけるのは1名です。ちがう条件をご希望でしたら、お問い合わせください。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. パソコンを2台使っています。両方で使えますか？</h4>
+<p>A. ご本人が使うなら、台数の制限はありません。同時に使ってもかまいません。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. バックアップを取っておいてもいいですか？</h4>
+<p>A. ぜひ取ってください。配布を終了しても、それまでに入手されたものを使う権利は残ります。ただし販売サイトによっては、再ダウンロードができなくなる場合があります。</p>
+</div>
+<h3>できないこと</h3>
+<div class="qa">
+<h4 class="q">Q. 友達に渡してもいいですか？</h4>
+<p>A. できません。改変したものでも、非公開のDiscordサーバーでも、DMで1人に送るのでも、無料でも同じです。配布ページのURLを教えてあげてください。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. いらなくなったので、誰かに譲れますか？</h4>
+<p>A. できません。転売も同じです。</p>
+</div>
+<h3>お金・クレジット・サポート</h3>
+<div class="qa">
+<h4 class="q">Q. クレジットは書いたほうがいいですか？</h4>
+<p>A. 基本は任意です。書いていただけると嬉しいですが、義務ではありません。</p>
+<p>ただし<strong>アセットを使った作品を有償で販売・頒布する場合（同人誌、写真集、イラストの単体販売など）は必須</strong>です。この場合は「三号スタジオ / Sangou Studio」と書いてください。どちらか一方だけでもかまいません。</p>
+<p>無償で公開する場合、グッズ、配信・放送は任意のままです。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. アップデートは有料ですか？</h4>
+<p>A. 無料です。別の商品として出す場合は、その限りではありません。</p>
+<p>自動更新の機能はないので、更新版が出たら配布元から改めてダウンロードしてください。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. 返品・返金はできますか？</h4>
+<p>A. ダウンロード販売のため、お客様のご都合による返品・返金はできません。ご購入前に動作環境をご確認ください。最初から重大な不具合があって直らない場合はお問い合わせください。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. サポートしてもらえますか？</h4>
+<p>A. 対応をお約束することはできませんが、お問い合わせには目を通しています。</p>
+</div>
+<h3>動かないとき</h3>
+<div class="qa">
+<h4 class="q">Q. VRChatのアップデートなどで動かなくなったら、直してもらえますか？</h4>
+<p>A. お約束はできません。アプリもアセットも同じです。</p>
+<p>直さないと判断した場合は、販売を止めるか、配布ページでお知らせします。</p>
+<p>なお、この場合の返金はできません。ご購入いただいた時点では正常に動作していたためです。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. ダウンロードできません</h4>
+<p>A. まず、購入した販売サイトの購入履歴やダウンロード欄をご確認ください。</p>
+<p>ログイン、購入手続き、サイトの不具合など販売サイトの仕組みに関することは、その販売サイトのヘルプや問い合わせ窓口が確実です。</p>
+<p>ダウンロードしたファイルが開けない、中身が違うなど商品そのものに関することは、こちらの窓口までご連絡ください。</p>
+</div>
+<h3>そのほか</h3>
+<div class="qa">
+<h4 class="q">Q. いつ規約に同意したことになりますか？</h4>
+<p>A. ダウンロードや購入をされた時点です。お使いになる前に、内容をご確認ください。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. 未成年でも使えますか？</h4>
+<p>A. 保護者の方の同意を得たうえでご利用ください。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. 規約が変わることはありますか？</h4>
+<p>A. あります。変更する場合は、効力が発生する14日前までに、それぞれの規約のページでお知らせします。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. 規約に違反したらどうなりますか？</h4>
+<p>A. 使っていただく権利が終了します。</p>
+<p>再配布や改変・解析といった重い違反の場合は、事前のご連絡なく終了することがあります。</p>
+<p>終了した場合は、アプリやアセットとその複製を削除してください。お支払いいただいた代金はお返しできません。</p>
+</div>
+<hr>
+<h2>アセットのこと</h2>
+<h3>使う・見せる</h3>
+<div class="qa">
+<h4 class="q">Q. VRChatにアップロードして使えますか？</h4>
+<p>A. できます。VRChat以外のソーシャルVRや、オンラインゲームでも大丈夫です。</p>
+<p>ただし、<strong>ご自身がお使いになる形に限ります。</strong> ほかの方が使える状態にすることはできません。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. SNSに画像や動画を投稿していいですか？</h4>
+<p>A. どうぞ。X、YouTube、pixivなど、どこでもかまいません。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. noteやブログの記事に使っていいですか？</h4>
+<p>A. 無料の記事なら自由です。クレジットも任意です。</p>
+<p><strong>有料記事の場合はクレジットを入れてください。</strong> 有償で販売する形になるためです。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. 撮った画像をコンテストや賞に応募していいですか？</h4>
+<p>A. 応募は自由です。撮影にアプリの機能を使っていても変わりません。</p>
+<p>ただし、応募要項に「応募作品の権利は主催者に帰属します」「主催者が自由に改変・商品化できます」といった条項がある場合はご注意ください。<strong>画像そのものはあなたの作品ですが、写っているアセットの権利は三号スタジオにあります。</strong> その部分まで主催者へ渡すことはできません。判断に迷う場合はご相談ください。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. R-18の表現に使っていいですか？</h4>
+<p>A. できます。ただし、見たくない方の目に触れないよう、ゾーニング（棲み分け）をおこなってください。暴力的な表現も同じです。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. 政治的な主張や宗教活動に使っていいですか？</h4>
+<p>A. できません。</p>
+</div>
+<h3>改変・対応データ</h3>
+<div class="qa">
+<h4 class="q">Q. 改変していいですか？</h4>
+<p>A. できます。色を変える、パーツを足す。ご自由にどうぞ。</p>
+<p>ただし、<strong>改変したデータを配布することはできません。</strong></p>
+</div>
+<div class="qa">
+<h4 class="q">Q. 改変を人にお願いしてもいいですか？</h4>
+<p>A. <strong>お願いする方と引き受ける方の両方が、そのアセットを購入している場合に限り</strong>できます。どちらか一方しか持っていない状態でデータを渡すことはできません。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. 三号スタジオのアセットに対応するデータを作って、配布・販売していいですか？</h4>
+<p>A. 新しく作ったデータなら、有償・無償を問わず自由に配布できます。ただし、<strong>三号スタジオのデータそのものを含めることはできません。</strong></p>
+<p><strong>元のデータのメッシュやウェイトを流用して作ったものは、ご自身で使う分だけ</strong>にしてください。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. 自分の別のモデルに、テクスチャやマテリアルを使っていいですか？</h4>
+<p>A. できます。</p>
+<p>ただし、<strong>そのモデルを配布・販売する場合は、三号スタジオのテクスチャやマテリアルを含めることはできません。</strong></p>
+</div>
+<h3>作品づくり</h3>
+<div class="qa">
+<h4 class="q">Q. アセットをモチーフにしたイラストや漫画を描いて、販売していいですか？</h4>
+<p>A. できます。有償・無償を問いません。</p>
+<p><strong>有償で販売・頒布する場合は、クレジットを入れてください。</strong></p>
+</div>
+<div class="qa">
+<h4 class="q">Q. 同人誌に使っていいですか？</h4>
+<p>A. できます。<strong>有償で頒布する場合はクレジットを入れてください。</strong> 無料配布なら任意です。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. アクリルスタンドなどのグッズを作っていいですか？</h4>
+<p>A. 改変して、オリジナルとは違うと分かる状態であれば作れます。公式グッズと間違われるのを防ぐためです。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. 動画作品や配信に使っていいですか？</h4>
+<p>A. できます。クレジットは任意です。ただし、有料の映像作品として単体で販売する場合は入れてください。</p>
+</div>
+<h3>できないこと</h3>
+<div class="qa">
+<h4 class="q">Q. Publicアバターとして置いたり、友達に着せてあげたりできますか？</h4>
+<p>A. できません。ご本人だけがお使いいただけます。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. アセットをモチーフにした機器を作っていいですか？</h4>
+<p>A. できません。有償・無償を問わず、装置の製造・配布はお断りしています。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. 自分のソフトウェアに組み込んで配布していいですか？</h4>
+<p>A. できません。</p>
+</div>
+<hr>
+<h2>アプリのこと</h2>
+<div class="qa">
+<h4 class="q">Q. 自分用に改造したり、中身を解析したりしてもいいですか？</h4>
+<p>A. できません。ただし config.json やログファイルの書き換えは改変にあたらないので、ご自由にどうぞ。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. Discordの画面共有で見せたり、リモート接続で使ったりしてもいいですか？</h4>
+<p>A. 見せるのは大丈夫です。配信でも、通話中の画面共有でも制限はありません。外出先から自宅のパソコンにつないで、ご自身で操作するのも問題ありません。</p>
+<p>できないのは、遠隔操作の機能を使ってほかの方に操作してもらうことです。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. アプリは外部と通信したり、個人情報を集めたりしますか？</h4>
+<p>A. アプリが扱う情報は商品ごとに異なります。同梱の説明書に記載していますので、そちらをご確認ください。</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. 起動しようとすると警告が出ます</h4>
+<p>A. コード署名をしていないためです。問題があるとは限りませんが、実行するかどうかはご自身でご判断ください。</p>
+</div>
+<hr>
+<p><strong>■ お問い合わせ</strong></p>
+<p>ご購入前のご質問も含め、配布元の販売サイトのメッセージ機能からご連絡ください。</p>
+<p>やりとりの記録が残り、ご注文の内容もこちらで確認できるため、いちばん確実です。</p>
+<p>販売サイトのメッセージをお使いになれない場合の連絡先は、利用規約のページに記載しています。</p>
+<p>※日本語でお願いします。</p>
+<hr>
+<p>正式な内容は、それぞれの利用規約をご確認ください。</p>
+<ul>
+<li class="row"><span class="label">アプリケーション利用規約</span><span class="pad">　</span><a href="https://legal.sangoustudio.com/app/">https://legal.sangoustudio.com/app/</a></li>
+<li class="row"><span class="label">アセット利用規約</span><span class="pad">　　　　　</span><a href="https://legal.sangoustudio.com/asset/">https://legal.sangoustudio.com/asset/</a></li>
+</ul>
+<p>© 2026 三号スタジオ</p>
+</main>
+</body>
+</html>
