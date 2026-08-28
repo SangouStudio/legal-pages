@@ -191,10 +191,29 @@ body {
   border-top: 1px solid var(--line-soft);
 }
 
+
+.crumb {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 1rem 1.1rem 0;
+  font-size: 0.86rem;
+  color: var(--fg-dim);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+.crumb a { color: var(--fg-dim); text-decoration: none; }
+.crumb a:hover { color: var(--accent); text-decoration: underline; }
+.crumb span[aria-hidden] { opacity: 0.55; }
+.crumb [aria-current] { color: var(--fg); }
+.crumb + main { padding-top: 1.1rem; }
+
 @media (max-width: 54rem) {
   .bar nav { display: none; }
-    .bar-inner > .langs { display: none; }
   .menu { display: block; }
+    .brand-text { display: none; }
+  .bar-inner > .langs { margin-left: auto; }
 }
 
 
@@ -379,7 +398,7 @@ footer a { color: var(--fg-muted); }
 
 
 @media print {
-  .bar, .menu, .pagelink { display: none !important; }
+  .bar, .menu, .pagelink, .crumb { display: none !important; }
   body { color: #000; background: #fff; font-size: 10.5pt; line-height: 1.7; }
   main { max-width: none; padding: 0; }
   h2 { break-after: avoid; page-break-after: avoid; font-size: 12pt; }
@@ -396,7 +415,7 @@ footer a { color: var(--fg-muted); }
 <body>
 <header class="bar">
 <div class="bar-inner">
-<a class="brand" href="/"><img src="/assets/mark.png" alt="" width="24" height="24">三号スタジオ ライセンス</a>
+<a class="brand" href="/"><img src="/assets/mark.png" alt="" width="24" height="24"><span class="brand-text">三号スタジオ ライセンス</span></a>
 <nav aria-label="pages">
 <ul>
 <li><a href="/asset/">アセット利用規約</a></li>
@@ -424,6 +443,9 @@ footer a { color: var(--fg-muted); }
 </details>
 </div>
 </header>
+<nav class="crumb" aria-label="breadcrumb">
+<a href="/">三号スタジオ ライセンス</a><span aria-hidden="true">›</span><span aria-current="page">アプリケーション利用規約</span>
+</nav>
 <main>
 <h1>三号スタジオ アプリケーション利用規約</h1>
 <div class="meta">
