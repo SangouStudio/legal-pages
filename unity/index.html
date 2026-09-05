@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Unity向けツール利用規約 ｜ 三号スタジオ</title>
+<meta name="description" content="三号スタジオが単体で配布するUnity用のツールの利用規約です。">
+<style>
+
+:root {
+  color-scheme: light dark;
+  --bg:        #ffffff;
+  --bg-soft:   #f6f8fa;
+  --bg-sunk:   #eef1f4;
+  --fg:        #1f2328;
+  --fg-muted:  #59636e;
+  --line:      #d8dee4;
+  --line-soft: #e6eaef;
+  --accent:    #0a58a8;
+  --accent-bg: #eaf2fb;
+  --radius: 10px;
+  --measure: 44rem;
+  --bar: 3.4rem;       --toc: 15rem;      }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:        #0f1216;
+    --bg-soft:   #171b21;
+    --bg-sunk:   #1d222a;
+    --fg:        #e4e9ee;
+    --fg-muted:  #9aa4af;
+    --line:      #2e353e;
+    --line-soft: #242a32;
+    --accent:    #7cb7f5;
+    --accent-bg: #172231;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Sans",
+               "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--fg);
+  background: var(--bg);
+  overflow-wrap: break-word;
+  word-break: normal;
+  line-break: strict;
+}
+
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+.bar-inner {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 3.4rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.98rem;
+  letter-spacing: 0.01em;
+  color: var(--fg);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.brand img { width: 24px; height: 24px; display: block; flex: none; }
+.brand:hover { color: var(--accent); }
+
+.bar nav { margin-left: auto; }
+
+.bar nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.bar nav a {
+  display: block;
+  padding: 0.35rem 0.7rem;
+  border-radius: 7px;
+  font-size: 0.9rem;
+  color: var(--fg-muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.bar nav a:hover { background: var(--bg-soft); color: var(--fg); }
+.bar nav a[aria-current="page"] {
+  color: var(--accent);
+  background: var(--accent-bg);
+  font-weight: 600;
+}
+
+.langs {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin-left: 0.6rem;
+  padding-left: 0.8rem;
+  border-left: 1px solid var(--line);
+}
+.langs a {
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  font-size: 0.84rem;
+  color: var(--fg-muted);
+  text-decoration: none;
+}
+.langs a:hover { background: var(--bg-soft); color: var(--fg); }
+.langs a[aria-current="true"] { color: var(--fg); font-weight: 700; }
+.langs span {   padding: 0.25rem 0.55rem;
+  font-size: 0.84rem;
+  color: var(--fg-muted);
+  opacity: 0.45;
+}
+
+.menu { display: none; margin-left: auto; }
+.menu > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--fg-muted);
+  font-size: 0.85rem;
+  user-select: none;
+}
+.menu > summary::-webkit-details-marker { display: none; }
+.menu > summary::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 0.72em;
+  margin-right: 0.45rem;
+  vertical-align: -0.05em;
+  border-top: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  background: linear-gradient(currentColor, currentColor) center/100% 2px no-repeat;
+}
+.menu[open] > summary { background: var(--bg-soft); color: var(--fg); }
+
+.menu-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  padding: 0.5rem 1.1rem 0.9rem;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+.menu-panel ul { list-style: none; margin: 0; padding: 0; }
+.menu-panel li { margin: 0; }
+.menu-panel a {
+  display: block;
+  padding: 0.6rem 0.4rem;
+  border-radius: 7px;
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.menu-panel a:hover { background: var(--bg-soft); }
+.menu-panel a[aria-current="page"] { color: var(--accent); font-weight: 600; }
+.menu-panel .langs {
+  margin: 0.5rem 0 0;
+  padding: 0.6rem 0 0;
+  border-left: 0;
+  border-top: 1px solid var(--line-soft);
+}
+
+
+.crumb {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 1rem 1.1rem 0;
+  font-size: 0.86rem;
+  color: var(--fg-dim);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+.crumb a { color: var(--fg-dim); text-decoration: none; }
+.crumb a:hover { color: var(--accent); text-decoration: underline; }
+.crumb span[aria-hidden] { opacity: 0.55; }
+.crumb [aria-current] { color: var(--fg); }
+.crumb + main { padding-top: 1.1rem; }
+
+@media (max-width: 54rem) {
+  .bar nav { display: none; }
+  .menu { display: block; }
+    .brand-text { display: none; }
+  .bar-inner > .langs { margin-left: auto; }
+}
+
+
+main {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 2.2rem 1.1rem 5rem;
+}
+
+h1 {
+  font-size: 1.55rem;
+  line-height: 1.5;
+  margin: 0 0 1.2rem;
+  letter-spacing: 0.01em;
+}
+
+h2 {
+  font-size: 1.24rem;
+  font-weight: 700;
+  line-height: 1.6;
+  margin: 2.5rem 0 1.1rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--line-soft);
+  scroll-margin-top: 4.2rem;   }
+
+h3 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  margin: 3.4rem 0 0.2rem;
+  color: var(--accent);
+  scroll-margin-top: 4.2rem;
+}
+
+p { margin: 0.85rem 0; }
+
+a { color: var(--accent); text-underline-offset: 0.18em; }
+a:hover { text-decoration: none; }
+
+ol { padding-left: 1.7rem; margin: 0.85rem 0; }
+ol ol { padding-left: 1.5rem; margin: 0.5rem 0; list-style-type: decimal; }
+li { margin: 0.5rem 0; }
+
+hr { border: 0; border-top: 1px solid var(--line-soft); margin: 2.5rem 0; }
+hr + h2 { border-top: 0; padding-top: 0; margin-top: 2.5rem; }
+
+strong { font-weight: 700; }
+
+.meta { overflow-x: auto; margin: 1.2rem 0 0; -webkit-overflow-scrolling: touch; }
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  font-size: 0.94rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+th, td {
+  border-bottom: 1px solid var(--line-soft);
+  padding: 0.6rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.7;
+}
+tr:last-child th, tr:last-child td { border-bottom: 0; }
+th { background: var(--bg-soft); white-space: nowrap; font-weight: 600; }
+.meta td:first-child {
+  white-space: nowrap;
+  background: var(--bg-soft);
+  font-weight: 600;
+  color: var(--fg-muted);
+  border-right: 1px solid var(--line-soft);
+  width: 1%;
+}
+
+blockquote {
+  margin: 1.2rem 0;
+  padding: 0.2rem 0 0.2rem 1.1rem;
+  border-left: 3px solid var(--line);
+  color: var(--fg-muted);
+}
+blockquote p { margin: 0.5rem 0; }
+
+.notice {
+  margin: 1.1rem 0 0;
+  padding: 0.85rem 1rem;
+  background: var(--accent-bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.notice p { margin: 0; }
+
+ul:has(> li.row) {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 1.1rem;
+  row-gap: 0.35rem;
+  list-style: none;
+  padding-left: 1.7rem;
+  margin: 0.85rem 0;
+}
+li.row { display: contents; }
+li.row .pad { display: none; }
+@media (max-width: 34rem) {
+  ul:has(> li.row) { display: block; }
+  li.row { display: block; margin: 0.7rem 0; }
+  li.row .label { display: block; font-weight: 600; }
+}
+
+.qa { margin: 0; }
+h4.q {
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--fg);
+  margin: 2.4rem 0 0.55rem;
+  scroll-margin-top: 4.2rem;
+}
+.qa p { margin: 0.25rem 0; }
+.qa ul { margin: 0.5rem 0; }
+.qa ul + p { margin-top: 0.5rem; }
+
+main > p:last-child {
+  margin-top: 3rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line-soft);
+  font-size: 0.88rem;
+  color: var(--fg-muted);
+}
+
+
+.shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--toc);
+  gap: 2rem;
+  max-width: 64rem;
+  margin: 0 auto;
+  align-items: start;
+}
+.shell > main { grid-column: 1; grid-row: 1; margin: 0 auto; }
+.shell > .toc-right {
+  grid-column: 2;
+  grid-row: 1;
+  position: sticky;
+  top: var(--bar);
+  max-height: calc(100vh - var(--bar));
+  max-height: calc(100dvh - var(--bar));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 2.2rem 0 3rem;
+}
+
+nav.toc {
+  margin: 0;
+  padding: 1.1rem 1.3rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+nav.toc > p { margin: 0 0 0.6rem; font-weight: 700; font-size: 0.95rem; }
+nav.toc ol { margin: 0; padding-left: 0; list-style: none; }
+nav.toc li { margin: 0.3rem 0; }
+nav.toc a { color: var(--fg); text-decoration: none; }
+nav.toc a:hover { color: var(--accent); text-decoration: underline; }
+
+@media (max-width: 68rem) {
+  .shell { grid-template-columns: minmax(0, 1fr); gap: 0; max-width: none; }
+  .shell > main { grid-column: 1; grid-row: 2; }
+  .shell > .toc-right {
+    grid-column: 1;
+    grid-row: 1;
+    position: static;
+    max-height: none;
+    overflow: visible;
+    padding: 0 1.1rem;
+  }
+  nav.toc {
+    max-width: var(--measure);
+    margin: 1.8rem auto 0;
+    max-height: 13rem;
+    overflow-y: auto;
+  }
+}
+
+.pagelink {
+  margin: 1.1rem 0 0;
+  padding: 0.85rem 1rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+}
+.pagelink p { margin: 0; }
+
+.cards { list-style: none; margin: 1.2rem 0 0; padding: 0; }
+.cards li { margin: 0.6rem 0; }
+.cards a {
+  display: block;
+  padding: 0.9rem 1.1rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  color: var(--fg);
+  text-decoration: none;
+  font-weight: 600;
+}
+.cards a:hover { border-color: var(--accent); color: var(--accent); }
+.cards .sub { display: block; font-weight: 400; font-size: 0.88rem; color: var(--fg-muted); margin-top: 0.15rem; }
+
+.dates { color: var(--fg-muted); font-size: 0.92rem; margin: 0.3rem 0 0; }
+
+footer {
+  border-top: 1px solid var(--line-soft);
+  margin-top: 4rem;
+  padding: 1.4rem 1.1rem 3rem;
+  font-size: 0.88rem;
+  color: var(--fg-muted);
+}
+footer .footer-inner { max-width: var(--measure); margin: 0 auto; }
+footer p { margin: 0.35rem 0; }
+footer a { color: var(--fg-muted); }
+
+
+@media print {
+  .bar, .menu, .pagelink, .crumb { display: none !important; }
+  body { color: #000; background: #fff; font-size: 10.5pt; line-height: 1.7; }
+  main { max-width: none; padding: 0; }
+  h2 { break-after: avoid; page-break-after: avoid; font-size: 12pt; }
+  li, p, tr { break-inside: avoid; page-break-inside: avoid; }
+  .meta { overflow-x: visible; }
+  table, .notice, nav.toc { border: 1px solid #999; }
+  th, .meta td:first-child { background: transparent; }
+  a { color: #000; text-decoration: none; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; }
+  footer { border-top: 1px solid #999; }
+}
+</style>
+</head>
+<body>
+<header class="bar">
+<div class="bar-inner">
+<a class="brand" href="/"><img src="/assets/mark.png" alt="" width="24" height="24"><span class="brand-text">Sangou Studio Legal</span></a>
+<nav aria-label="pages">
+<ul>
+<li><a href="/asset/">アセット利用規約</a></li>
+<li><a href="/app/">アプリケーション利用規約</a></li>
+<li><a href="/unity/" aria-current="page">Unity向けツール利用規約</a></li>
+<li><a href="/guide/">ガイドライン（Q&A）</a></li>
+</ul>
+</nav>
+<div class="langs">
+<a href="/unity/" aria-current="true">日本語</a>
+<a href="/unity/en/">English</a>
+</div>
+<details class="menu">
+<summary>Menu</summary>
+<div class="menu-panel">
+<ul>
+<li><a href="/asset/">アセット利用規約</a></li>
+<li><a href="/app/">アプリケーション利用規約</a></li>
+<li><a href="/unity/" aria-current="page">Unity向けツール利用規約</a></li>
+<li><a href="/guide/">ガイドライン（Q&A）</a></li>
+</ul>
+<div class="langs">
+<a href="/unity/" aria-current="true">日本語</a>
+<a href="/unity/en/">English</a>
+</div>
+</div>
+</details>
+</div>
+</header>
+<nav class="crumb" aria-label="breadcrumb">
+<a href="/">三号スタジオ ライセンス</a><span aria-hidden="true">›</span><span aria-current="page">Unity向けツール利用規約</span>
+</nav>
+<div class="shell">
+<main>
+<h1>三号スタジオ Unity向けツール利用規約</h1>
+<div class="meta">
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>版番号</td>
+<td>第 1.0 版</td>
+</tr>
+<tr>
+<td>制定日</td>
+<td>2026年9月5日</td>
+</tr>
+<tr>
+<td>適用開始日</td>
+<td>2026年9月19日</td>
+</tr>
+<tr>
+<td>最終改訂日</td>
+<td>―（初版）</td>
+</tr>
+<tr>
+<td>言語</td>
+<td>日本語（正本）</td>
+</tr>
+<tr>
+<td>対象</td>
+<td>三号スタジオが単体で配布するUnity用のツール（エディタ拡張、スクリプトなど。無償・有償を問わない）</td>
+</tr>
+<tr>
+<td>掲載場所</td>
+<td><a href="https://legal.sangoustudio.com/unity/">https://legal.sangoustudio.com/unity/</a></td>
+</tr>
+<tr>
+<td>ガイドライン</td>
+<td><a href="https://legal.sangoustudio.com/guide/">https://legal.sangoustudio.com/guide/</a></td>
+</tr>
+<tr>
+<td>お問い合わせ先</td>
+<td>配布元のメッセージ機能、または <a href="mailto:contact@sangoustudio.com">contact@sangoustudio.com</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="notice"><p><strong>改訂のお知らせ：</strong> 現在、改訂の予定はありません。</p></div>
+<p>この規約は、三号スタジオ（以下「制作者」）が配布するUnity用のツールを使うときのルールを定めた、制作者と利用者との間の契約です。</p>
+<p>内容をご確認のうえ、ご利用ください。</p>
+<p>この規約をやさしくまとめたガイドラインを、別に用意しています。</p>
+<p>先にそちらをお読みいただいてもかまいません。</p>
+<hr>
+<h2 id="scope">第1条（適用範囲）</h2>
+<ol>
+ <li value="1">この規約は、制作者が単体で配布するUnity用のツール（スクリプト、エディタ拡張、これらを収めたUnityパッケージのほか、設定ファイル、説明書など、その動作や利用に必要なファイルを含みます。以下「本ツール」といいます）に適用されます。
+ </li>
+ <li value="2">お手元の配布物に含まれるものが本ツールに当たるかどうかは、次のいずれかによって確かめられます。
+  <ol>
+   <li value="1">この規約のファイル（LICENSE.txt またはその翻訳）が、本ツールと同じフォルダの中、同じUnityパッケージの中、または同じ配布物（ZIPファイルなど）の中に置かれていること</li>
+   <li value="2">配布元（商品ページ、配布ページなど）において、この規約が適用される旨を制作者が案内していること</li>
+  </ol>
+ </li>
+ <li value="3">この規約は本ツールにのみ適用され、商品に同梱される3Dアセットや実行ファイルなどには適用されません。同梱物ごとの適用関係は、この規約の「同梱物ごとの適用関係」に定めるとおりです。
+ </li>
+ <li value="4">制作者が配布するアセットに組み込まれ、単体では配布されないUnity用のコンポーネントには、この規約は適用されません。これらには、それを含む商品の利用規約が適用されます。
+ </li>
+ <li value="5">この規約は、個々のツールの名称を掲げず、本ツールに当たるすべてのものに共通して適用されます。
+ </li>
+ <li value="6">本ツールが有償の商品の一部として配布される場合も、無償で単体配布される場合も、この規約は同じ内容で適用されます。対価の有無によって、禁止される行為の範囲が変わることはありません。ただし、有償で入手した場合にのみ意味を持つ定め（返金や、使用できる方の範囲に関する定めなど）があります。
+ </li>
+ <li value="7">この規約をやさしくまとめたガイドラインは、理解を助けるための参考資料であり、この規約の一部を構成するものではありません。ガイドラインの記載とこの規約が食い違う場合は、この規約が優先します。
+ </li>
+</ol>
+<h2 id="definitions">第2条（定義）</h2>
+<p>この規約で使う言葉の意味は、次のとおりです。</p>
+<ol>
+ <li value="1">本ツール　この規約の「適用範囲」に定めるものをいいます。
+ </li>
+ <li value="2">制作者　三号スタジオ（Sangou Studio）をいいます。
+ </li>
+ <li value="3">利用者　本ツールを入手し、ダウンロードし、取り込み、または使用する個人または法人をいいます。
+ </li>
+ <li value="4">配布元　制作者が本ツールを配布する場所（商品ページ、配布ページ、制作者のウェブサイトなど）をいいます。
+ </li>
+ <li value="5">成果物　利用者が本ツールを用いて作成したデータ、および本ツールが書き換えたデータをいいます。本ツールを改変したものは、成果物ではなく本ツールとして扱います。
+ </li>
+</ol>
+<h2 id="bundled-files">第3条（同梱物ごとの適用関係）</h2>
+<ol>
+ <li value="1">商品や配布物には、適用される規約が異なるファイルが同居している場合があります。この場合は、次の考え方によって切り分けます。
+  <ol>
+   <li value="1">本ツールと、その付属文書（readme、この規約のファイル、THIRD-PARTY-NOTICES.txt など）には、この規約が適用されます。</li>
+   <li value="2">実行ファイル（.exe など）には、この規約は適用されません。これには「三号スタジオ アプリケーション利用規約」が適用されます。本ツールについて認められる改変は、実行ファイルには及びません。</li>
+   <li value="3">3Dモデル、テクスチャ、マテリアル、アニメーション、シェーダーなどの制作物には、この規約は適用されません。これらには、商品ごとに定められたライセンスが適用されます。</li>
+   <li value="4">本ツールに組み込まれた第三者のソフトウェアには、「THIRD-PARTY-NOTICES.txt」に記載された各ライセンスが適用され、その内容がこの規約に優先します。ただし、それらを組み込んだ本ツール全体には、この規約が適用されます。</li>
+   <li value="5">本ツールが利用者のコンピューター上に作成した設定ファイルやログファイルは、利用者が自由に取り扱えます。</li>
+  </ol>
+ </li>
+ <li value="2">前項の代表的な例は、次のとおりです。ここに挙がっていないファイルについても、前項の考え方によって判断します。
+ </li>
+</ol>
+<div class="meta">
+<table>
+<thead>
+<tr>
+<th>ファイル</th>
+<th>適用される規約</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unityパッケージ（.unitypackage）、スクリプト（.cs）</td>
+<td>この規約</td>
+</tr>
+<tr>
+<td>readme</td>
+<td>この規約</td>
+</tr>
+<tr>
+<td>この規約のファイル（LICENSE.txt など）</td>
+<td>この規約</td>
+</tr>
+<tr>
+<td>THIRD-PARTY-NOTICES.txt（ファイル自体）</td>
+<td>この規約</td>
+</tr>
+<tr>
+<td>実行ファイル（.exe）</td>
+<td>三号スタジオ アプリケーション利用規約</td>
+</tr>
+<tr>
+<td>本ツールに組み込まれた第三者ソフトウェア</td>
+<td>THIRD-PARTY-NOTICES.txt に記載された各ライセンス</td>
+</tr>
+<tr>
+<td>3Dモデル、テクスチャなどのアセット</td>
+<td>商品ごとに定められたライセンス</td>
+</tr>
+<tr>
+<td>設定ファイル、ログファイルなどの生成ファイル</td>
+<td>利用者が自由に取り扱えます</td>
+</tr>
+<tr>
+<td>成果物</td>
+<td>この規約の「著作権」に定めるとおり、利用者に帰属します</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol>
+ <li value="3">一方の規約で認められていることが、他方の規約に及ぶことはありません。たとえば、この規約で改変が認められていても、それを理由に同梱の実行ファイルを改変することはできません。
+ </li>
+ <li value="4">どちらの規約が適用されるか判断がつかないファイルがある場合は、この規約の「お問い合わせ」に記載の窓口までご連絡ください。
+ </li>
+</ol>
+<h2 id="agreement">第4条（規約への同意）</h2>
+<ol>
+ <li value="1">利用者は、次のいずれかを行った時点で、この規約に同意したものとして扱われます。
+  <ol>
+   <li value="1">本ツールを購入すること（本ツールを含む商品を購入することを含みます）</li>
+   <li value="2">本ツールをダウンロードすること</li>
+   <li value="3">本ツールをUnityプロジェクトへ取り込むこと</li>
+   <li value="4">本ツールを使用すること</li>
+  </ol>
+ </li>
+ <li value="2">前項により同意があった時点で、制作者と利用者との間に、この規約を内容とする契約が成立します。
+ </li>
+ <li value="3">この規約に同意できない場合は、本ツールを購入、ダウンロード、取り込み、または使用しないでください。すでに入手している場合は、使用せずに削除してください。
+ </li>
+ <li value="4">前項により本ツールを削除した場合も、返金および返品の取扱いは、この規約の「返品と返金」に定めるとおりです。
+ </li>
+ <li value="5">未成年者が本ツールを利用する場合は、あらかじめ保護者（親権者などの法定代理人）の同意を得てください。
+ </li>
+</ol>
+<h2 id="license-grant">第5条（使用許諾）</h2>
+<ol>
+ <li value="1">制作者は、利用者がこの規約に従うことを条件として、本ツールを使用する権利を利用者に許諾します。この権利は非独占的（制作者が他の利用者にも同じ内容の許諾を行うもの）であり、第三者に譲渡することも、第三者に再許諾することもできません。この権利に期間の定めはありません。ただし、この規約の「使用許諾の終了」に定める場合を除きます。
+ </li>
+ <li value="2">前項の使用権は、配布元から本ツールを入手した場合にのみ生じます。配布元以外から入手した本ツールを使用することはできません。
+ </li>
+ <li value="3">この規約は、本ツールに関する権利を利用者に移転するものではありません。権利の帰属については、この規約の「著作権」に定めるとおりです。
+ </li>
+ <li value="4">利用者は、この規約の「禁止事項」および「ファイルの書き換えとデータの保全」に反しない限り、次のことができます。次に挙げるものは例示であり、この規約が禁止していない使用方法を制限するものではありません。
+  <ol>
+   <li value="1">目的を問わず本ツールを使用すること。個人としての利用でも、法人・団体の業務としての利用でもかまいません。</li>
+   <li value="2">商用に使用すること。収益化された配信・動画、広告、受託制作、イベント、法人の業務での利用を含みます。</li>
+   <li value="3">本ツールの画面を、配信・動画・スクリーンショット・記事などで公開すること。使い方の紹介や解説を作成して公開することも自由です。</li>
+   <li value="4">利用者本人が使用する範囲であれば、台数やプロジェクトの数の制限なく取り込み、そのために必要な複製を行うこと。ご自身が扱う複数のUnityプロジェクトへ取り込むことも、複数のパソコンへ取り込むこともでき、それらを同時に使うこともできます。</li>
+   <li value="5">バックアップの目的で、本ツールの複製を保管すること。</li>
+   <li value="6">本ツールを改変すること。自分の作業に合わせて書き換えること、スクリプトの一部だけを取り出してご自身の作業に使うことを含みます。ただし、アイコンや画像などの素材については、この規約の「禁止事項」に定めるとおりです。</li>
+   <li value="7">成果物を、制限なく利用すること。成果物を配布し、商品に含めて販売することを含みます。この規約は、成果物の利用を制限しません。</li>
+  </ol>
+ </li>
+ <li value="5">本ツールを有償で入手した場合（本ツールを含む商品を購入した場合を含みます）、本ツールを使用できるのは、1件のご購入につき1名に限ります。法人・団体でお求めの場合は、その法人・団体が指定する1名とします。複数の方が使用する場合は、使用する人数分をご購入ください。1つのUnityプロジェクトを複数の方が扱う場合も、扱う方の人数分をご購入ください。なお、制作者が無償で提供している本ツールには、この制限はありません。
+ </li>
+ <li value="6">この規約と異なる条件での利用をご希望の場合は、この規約の「お問い合わせ」に記載の窓口へ個別にご相談ください。制作者が書面（電子メールを含みます）により承諾した場合、その承諾した内容が、この規約に優先して適用されます。この承諾は、この規約の「お問い合わせ」に記載の窓口から制作者が行ったものに限り、承諾を受けた方との間においてのみ効力を有します。制作者から承諾を得たと主張する場合は、制作者の求めに応じて、その承諾を示す必要があります。制作者が明示的に承諾しない限り承諾があったものとはみなされず、返答が無いことをもって承諾とみなすこともできません。
+ </li>
+</ol>
+<h2 id="prohibited-acts">第6条（禁止事項）</h2>
+<ol>
+ <li value="1">利用者は、配布および譲渡について、次の行為をしてはなりません。改変したものについても、同じとします。
+  <ol>
+   <li value="1">本ツールの全部または一部を、第三者に配布し、譲渡し、貸与し、販売し、転売し、または公開すること。有償か無償かを問いません。</li>
+   <li value="2">本ツールを含む商品または配布物を、第三者に譲渡し、または転売すること。</li>
+   <li value="3">本ツールを、第三者がダウンロードまたは取得できる状態に置くこと。ファイル共有サービス、クラウドストレージの公開リンク、ソースコードの公開サービスへの掲載などを含みます。ただし、1つのUnityプロジェクトを共同で扱う場合において、本ツールを配布元から入手した者のみがアクセスできる場所へ、そのプロジェクトの一部として置くときは、この限りではありません。</li>
+   <li value="4">チャットサービスやコミュニティサーバー（メッセージアプリ、音声通話サービスに付属するファイル送信機能などを含みます）を通じて、本ツールのファイルを送信し、または投稿すること。</li>
+   <li value="5">本ツールを、自らが配布する商品、アセット、Unityパッケージその他の配布物に含めて、第三者に引き渡すこと。受託制作において、納品物に本ツールを含めて引き渡すことを含みます。</li>
+   <li value="6">本ツールを、利用者以外の者に操作させること。共用のパソコンを通じて操作させる場合や、画面共有・遠隔操作の機能を通じて操作させる場合を含みます。</li>
+   <li value="7">配布元のアカウントを第三者と共有し、または第三者に貸与して、本ツールを入手させること。</li>
+  </ol>
+ </li>
+ <li value="2">前項の各号は、次のいずれかに当たる場合であっても適用されます。
+  <ol>
+   <li value="1">相手方が、家族、友人、知人その他の親しい間柄の者である場合</li>
+   <li value="2">参加者が限られた、非公開の場である場合</li>
+   <li value="3">相手方の人数が少数である場合</li>
+   <li value="4">営利を目的としない場合</li>
+  </ol>
+ </li>
+ <li value="3">前2項は、成果物には適用されません。成果物の取扱いは、この規約の「著作権」に定めるとおりです。
+ </li>
+ <li value="4">利用者は、表示および素材の利用について、次の行為をしてはなりません。
+  <ol>
+   <li value="1">著作権表示、この規約のファイル、または「THIRD-PARTY-NOTICES.txt」を、削除し、または改変すること。</li>
+   <li value="2">本ツールに含まれるアイコン、画像、画面のデザインその他の素材を抽出して利用すること。ただし、この規約の「使用許諾」により認められる、本ツールの紹介や解説を目的とする場合を除きます。</li>
+   <li value="3">本ツールを自らが制作したものとして表示すること、または制作者との間に提携、承認その他の関係があるかのように誤認させる表示をすること。</li>
+  </ol>
+ </li>
+ <li value="5">利用者は、その他、次の行為をしてはなりません。
+  <ol>
+   <li value="1">本ツールを用いて、法令に違反する行為、または公の秩序もしくは善良の風俗に反する行為をすること。</li>
+   <li value="2">本ツールを用いて、第三者が提供するサービスの利用規約に違反する行為をすること。</li>
+   <li value="3">本ツールを用いて、制作者または第三者の権利を侵害し、またはこれらの者に損害を与える行為をすること。</li>
+   <li value="4">制作者の業務を妨害する行為をすること。</li>
+  </ol>
+ </li>
+ <li value="6">前各項の定めは、法令によりこれらの行為が認められている場合には、その認められる範囲において適用されません。
+ </li>
+ <li value="7">ある行為がこの条に当たるかどうか判断がつかない場合は、あらかじめ、この規約の「お問い合わせ」に記載の窓口までご確認ください。
+ </li>
+ <li value="8">利用者がこの条に違反した場合の取扱いは、この規約の「使用許諾の終了」に定めるとおりです。
+ </li>
+</ol>
+<h2 id="copyright">第7条（著作権）</h2>
+<ol>
+ <li value="1">本ツールに関して発生する著作権その他の知的財産権は、制作者に帰属します。ただし、本ツールに組み込まれた第三者のソフトウェアに関する権利は、「THIRD-PARTY-NOTICES.txt」に記載のとおり、それぞれの権利者に帰属します。本ツールは、各国の著作権法および国際条約により保護されています。
+ </li>
+ <li value="2">この規約は、本ツールの使用を許諾するものであり、前項の権利を利用者に移転し、または譲渡するものではありません。利用者が本ツールを改変した場合も、同じとします。
+ </li>
+ <li value="3">本ツールの名称、制作者の名称およびこれらのロゴに関する権利は、制作者に帰属します。この規約は、これらを使用する権利を利用者に許諾するものではありません。ただし、この規約の「使用許諾」により認められる、本ツールの紹介や解説のためにこれらを表示することは、この限りではありません。
+ </li>
+ <li value="4">成果物の権利は、利用者に帰属します。利用者は、成果物を配布し、商品に含めて販売することができます。ただし、成果物が本ツールに含まれる素材やひな形をそのまま含む場合、その部分についてはこの限りではありません。
+ </li>
+ <li value="5">利用者が制作者に提供した要望、不具合の報告、改善の提案を、制作者が本ツールその他の制作物に利用した場合であっても、制作者は、利用者に対して対価を支払う義務を負いません。
+ </li>
+ <li value="6">この規約に定める制限は、本ツールの各部分について著作権その他の権利が認められるかどうかにかかわらず、制作者と利用者との間の約束として効力を有します。
+ </li>
+</ol>
+<h2 id="system-requirements">第8条（動作環境）</h2>
+<ol>
+ <li value="1">本ツールが対応する動作環境（Unityのバージョン、あらかじめ必要な他のパッケージやアセットなど）は、配布元または説明書に記載します。
+ </li>
+ <li value="2">利用者は、本ツールを入手する前に、ご自身の環境が記載された動作環境を満たしていることをご確認ください。記載のない環境、および記載された条件を満たさない環境での動作について、制作者は何ら保証しません。
+ </li>
+ <li value="3">本ツールの動作確認は、制作者の環境において行っています。すべての環境において動作を確認したものではありません。
+ </li>
+ <li value="4">記載された動作環境を満たしている場合であっても、次のような事情により、本ツールが正常に動作しないこと、動作しなくなること、または動作が制限されることがあります。
+  <ol>
+   <li value="1">Unityその他のソフトウェアの更新、仕様の変更、またはサポートの終了</li>
+   <li value="2">同じUnityプロジェクトに導入された他のアセット、ツールまたはパッケージとの競合</li>
+   <li value="3">利用者の機器の構成や設定、機器の故障、他のソフトウェアとの競合、ネットワーク環境の制約</li>
+  </ol>
+ </li>
+ <li value="5">制作者は、すべてのアセットおよびツールとの組み合わせを確認することはできません。動作確認を行った組み合わせは、配布元または説明書に記載した範囲に限られます。
+ </li>
+ <li value="6">本ツールが正常に動作しない場合または動作しなくなった場合において、制作者が行う対応については、この規約の「アップデートとサポート」に定めるとおりです。また、損害についての取扱いは、この規約の「責任の制限」に定めるとおりです。
+ </li>
+</ol>
+<h2 id="data-safety">第9条（ファイルの書き換えとデータの保全）</h2>
+<ol>
+ <li value="1">本ツールは、利用者のUnityプロジェクトの中にあるファイルを、直接書き換え、または削除することがあります。書き換えまたは削除した内容を元に戻す機能はありません。
+ </li>
+ <li value="2">本ツールが対象とするファイル、および実際に書き換える範囲は、利用者の操作によって決まります。利用者は、実行する前に、対象が意図したものであることをご確認ください。
+ </li>
+ <li value="3">利用者は、本ツールを使用する前に、対象となるプロジェクトのバックアップを取得してください。バージョン管理を用いている場合は、変更をコミットするなど、直前の状態へ戻せるようにしてから使用してください。
+ </li>
+ <li value="4">処理が中断した場合（Unityの終了、電源の遮断、他のソフトウェアによる干渉を含みます）、書き換えの途中の状態が残ることがあります。この場合も、前項のバックアップから復元してください。
+ </li>
+ <li value="5">利用者は、自らのデータ、設定および構成の保全について責任を負うものとします。利用者は、定期的な控えの作成その他、データの消失による結果を避けるための措置をとる必要があることを、あらかじめ了解するものとします。
+ </li>
+ <li value="6">本ツールの使用によりデータが失われ、または破損した場合の損害の取扱いは、この規約の「無保証」および「責任の制限」に定めるとおりです。
+ </li>
+ <li value="7">本ツールは、人の生命、身体または財産に重大な影響を及ぼす用途（医療機器、交通機関や産業設備の制御、その他これらに準ずるもの）に使用されることを想定して設計されていません。これらの用途には使用しないでください。
+ </li>
+</ol>
+<h2 id="data-handling">第10条（本ツールが取り扱う情報）</h2>
+<ol>
+ <li value="1">本ツールが取り扱う情報の内容および取扱いは、配布元または説明書に記載します。
+ </li>
+ <li value="2">制作者が本ツールに関して個人情報を取り扱う場合、その取扱いについては、制作者が別に定めるところによります。
+ </li>
+</ol>
+<h2 id="updates-support">第11条（アップデートとサポート）</h2>
+<ol>
+ <li value="1">制作者は、本ツールのアップデート（機能の追加、変更、不具合の修正などをいいます。以下同じです）を提供する義務を負いません。アップデートの有無、内容、時期および方法は、制作者が判断します。
+ </li>
+ <li value="2">本ツールには、自動更新の機能はありません。アップデートを提供した場合、利用者は、配布元から改めて取得してください。制作者は、アップデートを行ったことを利用者に個別に通知しません。
+ </li>
+ <li value="3">アップデートの取得に、追加の対価は必要ありません。ただし、制作者がこれを別の商品として提供する場合は、この限りではありません。
+ </li>
+ <li value="4">アップデートにより、本ツールの機能が変更され、または削除されることがあります。また、それまでの設定やデータが引き継がれないことがあります。制作者は、アップデート前の版の配布や、これに関する対応を行いません。利用者が、アップデート前の版を引き続き使用することは妨げません。
+ </li>
+ <li value="5">アップデート後の本ツールの使用にも、この規約が適用されます。この規約を変更する場合の手続は、「この規約の変更」に定めるとおりです。
+ </li>
+ <li value="6">制作者は、本ツールに重大な不具合（本ツールの主要な機能が利用できなくなる不具合をいいます）が判明した場合、その修正に努めます。ただし、修正の可否、内容、時期および方法は制作者が判断するものとし、修正を行う義務を負うものではありません。
+ </li>
+ <li value="7">制作者は、本ツールの配布を終了することがあります。配布を終了する場合は、可能な範囲で、あらかじめ配布元などでお知らせするよう努めます。配布の終了後は、配布元から取得することができなくなりますので、あらかじめ本ツールの複製を保管しておくことをおすすめします。
+ </li>
+ <li value="8">配布が終了した場合であっても、それまでに配布元から入手した本ツールを使用する権利は失われません。
+ </li>
+ <li value="9">本ツールに関するお問い合わせは、この規約の「お問い合わせ」に記載の窓口で受け付けます。ただし、制作者は、これに回答し、または対応する義務を負いません。お問い合わせは日本語でお願いします。日本語以外でのお問い合わせには、対応できない場合があります。
+ </li>
+ <li value="10">特に、次のものについては対応しません。
+  <ol>
+   <li value="1">記載された動作環境を満たさない環境に関するもの</li>
+   <li value="2">本ツールを改変し、または改変されたものを使用したことに関するもの</li>
+   <li value="3">配布元以外から入手した本ツールに関するもの</li>
+   <li value="4">同じUnityプロジェクトに導入された他のアセット、ツールまたはパッケージに関するもの</li>
+   <li value="5">Unityの操作方法など、本ツールに固有でない事項に関するもの</li>
+   <li value="6">失われ、または破損したデータの復旧に関するもの</li>
+  </ol>
+ </li>
+ <li value="11">この条の取扱いは、制作者が本ツールを有償で提供したか無償で提供したかにかかわらず、同じです。
+ </li>
+</ol>
+<h2 id="no-warranty">第12条（無保証）</h2>
+<ol>
+ <li value="1">本ツールは、現状有姿（あるがままの状態）で提供されます。制作者は、本ツールについて、次の事項を保証しません。
+  <ol>
+   <li value="1">特定の目的に適合すること</li>
+   <li value="2">不具合、エラーまたは不正確な動作がないこと</li>
+   <li value="3">中断されることなく動作すること</li>
+   <li value="4">利用者が期待する結果や効果が得られること</li>
+   <li value="5">他のアセット、ツールまたはパッケージと支障なく連携すること、および、その連携が将来にわたって維持されること</li>
+   <li value="6">本ツールが書き換え、または取り扱うデータが失われず、破損しないこと</li>
+  </ol>
+ </li>
+ <li value="2">制作者は、本ツールに悪意のあるプログラムを意図的に含めていません。ただし、絶対的な安全性を保証するものではありません。
+ </li>
+ <li value="3">制作者の知る限り、本ツールは第三者の権利を侵害していません。ただし、これを保証するものではありません。
+ </li>
+ <li value="4">配布元および説明書に記載した本ツールの内容は、記載の時点における情報です。アップデートや動作環境の変化により、記載と異なる動作となることがあります。
+ </li>
+ <li value="5">制作者以外の者が作成した紹介記事、動画、解説その他の資料の内容について、制作者は保証しません。
+ </li>
+ <li value="6">この条は、法令により制作者が負うこととされている責任を排除するものではありません。
+ </li>
+ <li value="7">この条の取扱いは、制作者が本ツールを有償で提供したか無償で提供したかにかかわらず、同じです。
+ </li>
+</ol>
+<h2 id="liability">第13条（責任の制限）</h2>
+<ol>
+ <li value="1">利用者が消費者（消費者契約法第2条第1項に定める消費者をいいます）である場合、制作者は、本ツールに関して利用者に生じた損害について、制作者に故意または重大な過失があるときを除き、次の範囲に限って責任を負います。
+  <ol>
+   <li value="1">賠償の対象は、通常生ずべき損害に限ります。逸失利益、事業上の機会の喪失、データの消失または破損によって生じた損害、第三者からの請求に基づく損害その他の特別の事情によって生じた損害は、対象としません。</li>
+   <li value="2">賠償額は、利用者が本ツールまたは本ツールを含む商品の対価として支払った金額、または金1,000円のいずれか高い額を上限とします。</li>
+  </ol>
+ </li>
+ <li value="2">利用者が消費者でない場合、制作者は、本ツールに関して利用者に生じた損害について、責任を負いません。ただし、制作者に故意または重大な過失があるときは、この限りではありません。
+ </li>
+ <li value="3">次の事由により生じた損害について、制作者は責任を負いません。ただし、制作者に故意または重大な過失があるときは、この限りではありません。
+  <ol>
+   <li value="1">利用者がこの規約に違反したこと</li>
+   <li value="2">記載された動作環境を満たさない環境で本ツールを使用したこと</li>
+   <li value="3">配布元以外から入手した本ツールを使用したこと</li>
+   <li value="4">この規約の「ファイルの書き換えとデータの保全」に定めるバックアップを取得していなかったこと</li>
+   <li value="5">その他、利用者の責めに帰すべき事由</li>
+  </ol>
+ </li>
+ <li value="4">利用者が本ツールの利用に関して第三者との間に紛争を生じた場合、利用者は、自己の責任と費用によりこれを解決するものとします。当該紛争が利用者の責めに帰すべき事由によるものであり、制作者が第三者から請求を受けたときは、利用者は、制作者に生じた損害を賠償するものとします。
+ </li>
+ <li value="5">本ツールに契約の内容に適合しない点があった場合の取扱いは、この規約の「返品と返金」に定めるとおりです。
+ </li>
+ <li value="6">この条の定めは、法令により無効とされ、または適用されないとされる範囲においては、適用されません。
+ </li>
+</ol>
+<h2 id="refunds">第14条（返品と返金）</h2>
+<ol>
+ <li value="1">本ツールはダウンロードにより提供されるため、返品はできません。
+ </li>
+ <li value="2">利用者の都合による購入の取消し、契約の解除および返金には応じられません。利用者の都合とは、たとえば次のような場合をいいます。
+  <ol>
+   <li value="1">動作環境を確認しなかった、または確認を誤った場合</li>
+   <li value="2">内容が思っていたものと異なった場合</li>
+   <li value="3">誤って購入した場合</li>
+   <li value="4">必要がなくなった場合</li>
+   <li value="5">本ツールを使用しなかった場合</li>
+  </ol>
+ </li>
+ <li value="3">配布元によっては、その仕組み上、購入後の返金の手続を行えないことがあります。配布元を通じた返金の可否および手続は、配布元が定めるところによります。
+ </li>
+ <li value="4">前2項にかかわらず、本ツールが、利用者に提供された時点において、契約の内容に適合しない重大な点を有しており、制作者が相当の期間内にこれを修正しない場合、制作者は、利用者からの申出により、対価の返還その他の適切な対応を行います。配布元を通じた返金ができないときは、制作者は、利用者と協議のうえ、他の方法によりこれを行います。
+ </li>
+ <li value="5">本ツールが提供された後に生じた事情（この規約の「動作環境」に掲げる事情を含みます）により本ツールが正常に動作しなくなった場合は、前項の「契約の内容に適合しない重大な点」には当たりません。この場合、返金には応じられません。
+ </li>
+ <li value="6">制作者は、本ツールが正常に動作しないことを知った場合において、これを修正しないときは、その旨を配布元に掲示し、または配布を停止するよう努めます。
+ </li>
+ <li value="7">制作者が無償で提供した本ツールについては、この条の返金に関する定めは適用されません。
+ </li>
+ <li value="8">本ツールまたは本ツールを含む商品について返金が行われた場合、利用者は、本ツールを使用する権利を失います。この場合、利用者は、本ツールおよびその複製を削除してください。成果物については、この限りではありません。
+ </li>
+</ol>
+<h2 id="termination">第15条（使用許諾の終了）</h2>
+<ol>
+ <li value="1">利用者が、この規約の「禁止事項」のうち、配布および譲渡に関する定め、または表示および素材の利用に関する定めに違反した場合、その違反は、催告によって是正することができない重大な違反とし、制作者は、催告をすることなく、直ちにその利用者に対する使用許諾を終了することができます。
+ </li>
+ <li value="2">利用者が前項以外の点でこの規約に違反した場合、制作者は、相当の期間を定めて是正を求めることができます。その期間内に是正されないときは、制作者は、使用許諾を終了することができます。
+ </li>
+ <li value="3">使用許諾が終了した場合、利用者は、直ちに本ツールの使用を中止し、本ツールおよびそのすべての複製（改変したものを含みます）を削除しなければなりません。成果物については、この限りではありません。
+ </li>
+ <li value="4">使用許諾が終了した場合であっても、制作者は、対価を返還しません。
+ </li>
+ <li value="5">使用許諾の終了は、制作者が利用者に対して有する損害賠償の請求その他の権利を妨げるものではありません。
+ </li>
+ <li value="6">制作者は、この条により使用許諾を終了した利用者に対し、以後、本ツールの提供を断ることができます。
+ </li>
+</ol>
+<h2 id="changes">第16条（この規約の変更）</h2>
+<ol>
+ <li value="1">制作者は、次のいずれかに該当する場合、利用者の個別の同意を得ることなく、この規約を変更することができます。
+  <ol>
+   <li value="1">変更が、利用者の一般の利益に適合するとき</li>
+   <li value="2">変更が、この規約の目的に反せず、かつ、変更の必要性、変更後の内容の相当性その他の事情に照らして合理的なものであるとき</li>
+  </ol>
+ </li>
+ <li value="2">制作者は、この規約を変更する場合、効力発生日を定めたうえで、次の事項を、効力発生日の14日前までに、この規約の冒頭に記載した掲載場所において掲示します。
+  <ol>
+   <li value="1">この規約を変更する旨</li>
+   <li value="2">変更後の内容</li>
+   <li value="3">効力発生日</li>
+  </ol>
+ </li>
+ <li value="3">前項の掲示を効力発生日までに行わなかった場合、変更は、その効力を生じません。
+ </li>
+ <li value="4">変更後のこの規約は、効力発生日以後、すでに配布された本ツールを含め、すべての本ツールについて適用されます。
+ </li>
+ <li value="5">変更後のこの規約に同意できない場合、利用者は、本ツールの使用を中止し、これを削除してください。
+ </li>
+ <li value="6">制作者は、この規約の掲載場所を、本ツールの配布を終了した後も、相当の期間維持するよう努めます。
+ </li>
+</ol>
+<h2 id="general">第17条（その他の取り決め）</h2>
+<ol>
+ <li value="1">この規約は、日本語を正本とします。制作者が日本語以外の言語による版を提供した場合、それは参考訳とし、内容に食い違いがあるときは日本語版が優先します。制作者以外の者が作成した翻訳について、制作者はその正確性を保証せず、責任を負いません。
+ </li>
+ <li value="2">この規約の一部が法令により無効とされた場合であっても、その他の部分は、引き続き効力を有します。この場合、無効とされた部分は、その趣旨に最も近い有効な内容に読み替えるものとします。
+ </li>
+ <li value="3">この規約の一部が特定の利用者との関係においてのみ無効とされた場合であっても、その他の利用者との関係では、引き続き効力を有します。
+ </li>
+ <li value="4">制作者がこの規約に基づく権利を行使せず、またはその行使を遅延した場合であっても、その権利を放棄したものとはみなされません。
+ </li>
+ <li value="5">この規約のうち、著作権、禁止事項、ファイルの書き換えとデータの保全、無保証、責任の制限、返品と返金、使用許諾の終了、この条および準拠法と裁判管轄に関する定め、ならびにこれらの解釈に必要な定めは、使用許諾が終了した後も、なお効力を有します。
+ </li>
+ <li value="6">制作者は、本ツールの提供に関する事業を第三者に承継させる場合、この規約上の地位、権利および義務を、その第三者に承継させることができるものとし、利用者は、これについてあらかじめ同意するものとします。
+ </li>
+</ol>
+<h2 id="governing-law">第18条（準拠法と裁判管轄）</h2>
+<ol>
+ <li value="1">この規約および本ツールの使用に関しては、日本法を準拠法とします。
+ </li>
+ <li value="2">この規約または本ツールの使用に関して疑義または紛争が生じた場合、制作者および利用者は、まず誠実に協議して解決を図るものとします。
+ </li>
+ <li value="3">訴訟の必要が生じた場合、東京地方裁判所を第一審の専属的合意管轄裁判所とします。
+ </li>
+ <li value="4">前各項の定めは、利用者が消費者である場合において、法令によりその利用者に認められる権利および裁判所の管轄を妨げるものではありません。
+ </li>
+</ol>
+<h2 id="contact">第19条（お問い合わせ）</h2>
+<ol>
+ <li value="1">本ツールおよびこの規約に関するお問い合わせ窓口は、この規約の掲載場所、および配布元または説明書に記載します。
+ </li>
+ <li value="2">お問い合わせの際に次の内容をお知らせいただくと、対応が円滑になります。
+  <ol>
+   <li value="1">本ツールの名称およびバージョン</li>
+   <li value="2">Unityのバージョン、および導入している他のアセットやツール</li>
+   <li value="3">お困りの内容（表示されたメッセージがあれば、その内容）</li>
+  </ol>
+ </li>
+ <li value="3">お問い合わせは日本語でお願いします。制作者が回答および対応の義務を負わないことは、この規約の「アップデートとサポート」に定めるとおりです。
+ </li>
+ <li value="4">この規約と異なる条件での利用に関するご相談も、この窓口で受け付けます。
+ </li>
+</ol>
+<hr>
+<p>本規約は、Unity Technologies またはその関連会社が後援し、または提携するものではありません。Unity は、米国およびその他の国における Unity Technologies またはその関連会社の商標または登録商標です。</p>
+<p>© 2026 Sangou Studio</p>
+<div class="pagelink"><p>やさしくまとめた<a href="/guide/">利用ガイドライン（Q&amp;A）</a>もあります。</p></div>
+<div class="pagelink"><p>3Dモデルなどのアセットには、<a href="/asset/">アセット利用規約</a>が適用されます。同梱のアプリケーションには、<a href="/app/">アプリケーション利用規約</a>が適用されます。</p></div>
+</main>
+<aside class="toc-right">
+<nav class="toc">
+<p>目次</p>
+<ol>
+<li><a href="#scope">第1条（適用範囲）</a></li>
+<li><a href="#definitions">第2条（定義）</a></li>
+<li><a href="#bundled-files">第3条（同梱物ごとの適用関係）</a></li>
+<li><a href="#agreement">第4条（規約への同意）</a></li>
+<li><a href="#license-grant">第5条（使用許諾）</a></li>
+<li><a href="#prohibited-acts">第6条（禁止事項）</a></li>
+<li><a href="#copyright">第7条（著作権）</a></li>
+<li><a href="#system-requirements">第8条（動作環境）</a></li>
+<li><a href="#data-safety">第9条（ファイルの書き換えとデータの保全）</a></li>
+<li><a href="#data-handling">第10条（本ツールが取り扱う情報）</a></li>
+<li><a href="#updates-support">第11条（アップデートとサポート）</a></li>
+<li><a href="#no-warranty">第12条（無保証）</a></li>
+<li><a href="#liability">第13条（責任の制限）</a></li>
+<li><a href="#refunds">第14条（返品と返金）</a></li>
+<li><a href="#termination">第15条（使用許諾の終了）</a></li>
+<li><a href="#changes">第16条（この規約の変更）</a></li>
+<li><a href="#general">第17条（その他の取り決め）</a></li>
+<li><a href="#governing-law">第18条（準拠法と裁判管轄）</a></li>
+<li><a href="#contact">第19条（お問い合わせ）</a></li>
+</ol>
+</nav>
+</aside>
+</div>
+</body>
+</html>

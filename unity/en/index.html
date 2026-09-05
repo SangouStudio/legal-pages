@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Terms of Use for Unity Tools | Sangou Studio</title>
+<meta name="description" content="Terms of use for tools for Unity distributed on their own by Sangou Studio.">
+<style>
+
+:root {
+  color-scheme: light dark;
+  --bg:        #ffffff;
+  --bg-soft:   #f6f8fa;
+  --bg-sunk:   #eef1f4;
+  --fg:        #1f2328;
+  --fg-muted:  #59636e;
+  --line:      #d8dee4;
+  --line-soft: #e6eaef;
+  --accent:    #0a58a8;
+  --accent-bg: #eaf2fb;
+  --radius: 10px;
+  --measure: 44rem;
+  --bar: 3.4rem;       --toc: 15rem;      }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:        #0f1216;
+    --bg-soft:   #171b21;
+    --bg-sunk:   #1d222a;
+    --fg:        #e4e9ee;
+    --fg-muted:  #9aa4af;
+    --line:      #2e353e;
+    --line-soft: #242a32;
+    --accent:    #7cb7f5;
+    --accent-bg: #172231;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Sans",
+               "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--fg);
+  background: var(--bg);
+  overflow-wrap: break-word;
+  word-break: normal;
+  line-break: strict;
+}
+
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+.bar-inner {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 3.4rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.98rem;
+  letter-spacing: 0.01em;
+  color: var(--fg);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.brand img { width: 24px; height: 24px; display: block; flex: none; }
+.brand:hover { color: var(--accent); }
+
+.bar nav { margin-left: auto; }
+
+.bar nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.bar nav a {
+  display: block;
+  padding: 0.35rem 0.7rem;
+  border-radius: 7px;
+  font-size: 0.9rem;
+  color: var(--fg-muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.bar nav a:hover { background: var(--bg-soft); color: var(--fg); }
+.bar nav a[aria-current="page"] {
+  color: var(--accent);
+  background: var(--accent-bg);
+  font-weight: 600;
+}
+
+.langs {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin-left: 0.6rem;
+  padding-left: 0.8rem;
+  border-left: 1px solid var(--line);
+}
+.langs a {
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  font-size: 0.84rem;
+  color: var(--fg-muted);
+  text-decoration: none;
+}
+.langs a:hover { background: var(--bg-soft); color: var(--fg); }
+.langs a[aria-current="true"] { color: var(--fg); font-weight: 700; }
+.langs span {   padding: 0.25rem 0.55rem;
+  font-size: 0.84rem;
+  color: var(--fg-muted);
+  opacity: 0.45;
+}
+
+.menu { display: none; margin-left: auto; }
+.menu > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--fg-muted);
+  font-size: 0.85rem;
+  user-select: none;
+}
+.menu > summary::-webkit-details-marker { display: none; }
+.menu > summary::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 0.72em;
+  margin-right: 0.45rem;
+  vertical-align: -0.05em;
+  border-top: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  background: linear-gradient(currentColor, currentColor) center/100% 2px no-repeat;
+}
+.menu[open] > summary { background: var(--bg-soft); color: var(--fg); }
+
+.menu-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  padding: 0.5rem 1.1rem 0.9rem;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+.menu-panel ul { list-style: none; margin: 0; padding: 0; }
+.menu-panel li { margin: 0; }
+.menu-panel a {
+  display: block;
+  padding: 0.6rem 0.4rem;
+  border-radius: 7px;
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.menu-panel a:hover { background: var(--bg-soft); }
+.menu-panel a[aria-current="page"] { color: var(--accent); font-weight: 600; }
+.menu-panel .langs {
+  margin: 0.5rem 0 0;
+  padding: 0.6rem 0 0;
+  border-left: 0;
+  border-top: 1px solid var(--line-soft);
+}
+
+
+.crumb {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 1rem 1.1rem 0;
+  font-size: 0.86rem;
+  color: var(--fg-dim);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+.crumb a { color: var(--fg-dim); text-decoration: none; }
+.crumb a:hover { color: var(--accent); text-decoration: underline; }
+.crumb span[aria-hidden] { opacity: 0.55; }
+.crumb [aria-current] { color: var(--fg); }
+.crumb + main { padding-top: 1.1rem; }
+
+@media (max-width: 54rem) {
+  .bar nav { display: none; }
+  .menu { display: block; }
+    .brand-text { display: none; }
+  .bar-inner > .langs { margin-left: auto; }
+}
+
+
+main {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 2.2rem 1.1rem 5rem;
+}
+
+h1 {
+  font-size: 1.55rem;
+  line-height: 1.5;
+  margin: 0 0 1.2rem;
+  letter-spacing: 0.01em;
+}
+
+h2 {
+  font-size: 1.24rem;
+  font-weight: 700;
+  line-height: 1.6;
+  margin: 2.5rem 0 1.1rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--line-soft);
+  scroll-margin-top: 4.2rem;   }
+
+h3 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  margin: 3.4rem 0 0.2rem;
+  color: var(--accent);
+  scroll-margin-top: 4.2rem;
+}
+
+p { margin: 0.85rem 0; }
+
+a { color: var(--accent); text-underline-offset: 0.18em; }
+a:hover { text-decoration: none; }
+
+ol { padding-left: 1.7rem; margin: 0.85rem 0; }
+ol ol { padding-left: 1.5rem; margin: 0.5rem 0; list-style-type: decimal; }
+li { margin: 0.5rem 0; }
+
+hr { border: 0; border-top: 1px solid var(--line-soft); margin: 2.5rem 0; }
+hr + h2 { border-top: 0; padding-top: 0; margin-top: 2.5rem; }
+
+strong { font-weight: 700; }
+
+.meta { overflow-x: auto; margin: 1.2rem 0 0; -webkit-overflow-scrolling: touch; }
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  font-size: 0.94rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+th, td {
+  border-bottom: 1px solid var(--line-soft);
+  padding: 0.6rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.7;
+}
+tr:last-child th, tr:last-child td { border-bottom: 0; }
+th { background: var(--bg-soft); white-space: nowrap; font-weight: 600; }
+.meta td:first-child {
+  white-space: nowrap;
+  background: var(--bg-soft);
+  font-weight: 600;
+  color: var(--fg-muted);
+  border-right: 1px solid var(--line-soft);
+  width: 1%;
+}
+
+blockquote {
+  margin: 1.2rem 0;
+  padding: 0.2rem 0 0.2rem 1.1rem;
+  border-left: 3px solid var(--line);
+  color: var(--fg-muted);
+}
+blockquote p { margin: 0.5rem 0; }
+
+.notice {
+  margin: 1.1rem 0 0;
+  padding: 0.85rem 1rem;
+  background: var(--accent-bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.notice p { margin: 0; }
+
+ul:has(> li.row) {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 1.1rem;
+  row-gap: 0.35rem;
+  list-style: none;
+  padding-left: 1.7rem;
+  margin: 0.85rem 0;
+}
+li.row { display: contents; }
+li.row .pad { display: none; }
+@media (max-width: 34rem) {
+  ul:has(> li.row) { display: block; }
+  li.row { display: block; margin: 0.7rem 0; }
+  li.row .label { display: block; font-weight: 600; }
+}
+
+.qa { margin: 0; }
+h4.q {
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--fg);
+  margin: 2.4rem 0 0.55rem;
+  scroll-margin-top: 4.2rem;
+}
+.qa p { margin: 0.25rem 0; }
+.qa ul { margin: 0.5rem 0; }
+.qa ul + p { margin-top: 0.5rem; }
+
+main > p:last-child {
+  margin-top: 3rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line-soft);
+  font-size: 0.88rem;
+  color: var(--fg-muted);
+}
+
+
+.shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--toc);
+  gap: 2rem;
+  max-width: 64rem;
+  margin: 0 auto;
+  align-items: start;
+}
+.shell > main { grid-column: 1; grid-row: 1; margin: 0 auto; }
+.shell > .toc-right {
+  grid-column: 2;
+  grid-row: 1;
+  position: sticky;
+  top: var(--bar);
+  max-height: calc(100vh - var(--bar));
+  max-height: calc(100dvh - var(--bar));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 2.2rem 0 3rem;
+}
+
+nav.toc {
+  margin: 0;
+  padding: 1.1rem 1.3rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+nav.toc > p { margin: 0 0 0.6rem; font-weight: 700; font-size: 0.95rem; }
+nav.toc ol { margin: 0; padding-left: 0; list-style: none; }
+nav.toc li { margin: 0.3rem 0; }
+nav.toc a { color: var(--fg); text-decoration: none; }
+nav.toc a:hover { color: var(--accent); text-decoration: underline; }
+
+@media (max-width: 68rem) {
+  .shell { grid-template-columns: minmax(0, 1fr); gap: 0; max-width: none; }
+  .shell > main { grid-column: 1; grid-row: 2; }
+  .shell > .toc-right {
+    grid-column: 1;
+    grid-row: 1;
+    position: static;
+    max-height: none;
+    overflow: visible;
+    padding: 0 1.1rem;
+  }
+  nav.toc {
+    max-width: var(--measure);
+    margin: 1.8rem auto 0;
+    max-height: 13rem;
+    overflow-y: auto;
+  }
+}
+
+.pagelink {
+  margin: 1.1rem 0 0;
+  padding: 0.85rem 1rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+}
+.pagelink p { margin: 0; }
+
+.cards { list-style: none; margin: 1.2rem 0 0; padding: 0; }
+.cards li { margin: 0.6rem 0; }
+.cards a {
+  display: block;
+  padding: 0.9rem 1.1rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  color: var(--fg);
+  text-decoration: none;
+  font-weight: 600;
+}
+.cards a:hover { border-color: var(--accent); color: var(--accent); }
+.cards .sub { display: block; font-weight: 400; font-size: 0.88rem; color: var(--fg-muted); margin-top: 0.15rem; }
+
+.dates { color: var(--fg-muted); font-size: 0.92rem; margin: 0.3rem 0 0; }
+
+footer {
+  border-top: 1px solid var(--line-soft);
+  margin-top: 4rem;
+  padding: 1.4rem 1.1rem 3rem;
+  font-size: 0.88rem;
+  color: var(--fg-muted);
+}
+footer .footer-inner { max-width: var(--measure); margin: 0 auto; }
+footer p { margin: 0.35rem 0; }
+footer a { color: var(--fg-muted); }
+
+
+@media print {
+  .bar, .menu, .pagelink, .crumb { display: none !important; }
+  body { color: #000; background: #fff; font-size: 10.5pt; line-height: 1.7; }
+  main { max-width: none; padding: 0; }
+  h2 { break-after: avoid; page-break-after: avoid; font-size: 12pt; }
+  li, p, tr { break-inside: avoid; page-break-inside: avoid; }
+  .meta { overflow-x: visible; }
+  table, .notice, nav.toc { border: 1px solid #999; }
+  th, .meta td:first-child { background: transparent; }
+  a { color: #000; text-decoration: none; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; }
+  footer { border-top: 1px solid #999; }
+}
+</style>
+</head>
+<body>
+<header class="bar">
+<div class="bar-inner">
+<a class="brand" href="/en/"><img src="/assets/mark.png" alt="" width="24" height="24"><span class="brand-text">Sangou Studio Legal</span></a>
+<nav aria-label="pages">
+<ul>
+<li><a href="/asset/en/">Asset Terms of Use</a></li>
+<li><a href="/app/en/">Application Terms of Use</a></li>
+<li><a href="/unity/en/" aria-current="page">Terms of Use for Unity Tools</a></li>
+<li><a href="/guide/en/">Guidelines (Q&A)</a></li>
+</ul>
+</nav>
+<div class="langs">
+<a href="/unity/">日本語</a>
+<a href="/unity/en/" aria-current="true">English</a>
+</div>
+<details class="menu">
+<summary>Menu</summary>
+<div class="menu-panel">
+<ul>
+<li><a href="/asset/en/">Asset Terms of Use</a></li>
+<li><a href="/app/en/">Application Terms of Use</a></li>
+<li><a href="/unity/en/" aria-current="page">Terms of Use for Unity Tools</a></li>
+<li><a href="/guide/en/">Guidelines (Q&A)</a></li>
+</ul>
+<div class="langs">
+<a href="/unity/">日本語</a>
+<a href="/unity/en/" aria-current="true">English</a>
+</div>
+</div>
+</details>
+</div>
+</header>
+<nav class="crumb" aria-label="breadcrumb">
+<a href="/en/">Sangou Studio Legal</a><span aria-hidden="true">›</span><span aria-current="page">Terms of Use for Unity Tools</span>
+</nav>
+<div class="shell">
+<main>
+<h1>Sangou Studio Terms of Use for Unity Tools</h1>
+<div class="meta">
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version</td>
+<td>Version 1.0</td>
+</tr>
+<tr>
+<td>Date of enactment</td>
+<td>September 5, 2026</td>
+</tr>
+<tr>
+<td>Effective date</td>
+<td>September 19, 2026</td>
+</tr>
+<tr>
+<td>Last revised</td>
+<td>— (first edition)</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>Japanese (authoritative text)</td>
+</tr>
+<tr>
+<td>Scope</td>
+<td>Tools for Unity distributed on their own by Sangou Studio (editor extensions, scripts, and the like; whether free or paid)</td>
+</tr>
+<tr>
+<td>Posted at</td>
+<td><a href="https://legal.sangoustudio.com/unity/en/">https://legal.sangoustudio.com/unity/en/</a></td>
+</tr>
+<tr>
+<td>Guidelines</td>
+<td><a href="https://legal.sangoustudio.com/guide/en/">https://legal.sangoustudio.com/guide/en/</a></td>
+</tr>
+<tr>
+<td>Contact</td>
+<td>The messaging function of the distribution source, or <a href="mailto:contact@sangoustudio.com">contact@sangoustudio.com</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="notice"><p><strong>Notice regarding revisions:</strong> No revision is currently planned.</p></div>
+<blockquote><p><strong>About this translation:</strong> This document is an English reference translation of the Japanese original. Only the Japanese text is authoritative. If there is any discrepancy between this translation and the Japanese text, the Japanese text prevails.</p></blockquote>
+<p>These Terms are a contract between Sangou Studio (the "Creator") and the user, setting out the rules for using the tools for Unity that the Creator distributes.</p>
+<p>Please read them before use.</p>
+<p>Separately, we provide guidelines that summarize these Terms in plain language.</p>
+<p>You are welcome to read those first.</p>
+<hr>
+<h2 id="scope">Article 1 (Scope of Application)</h2>
+<ol>
+ <li value="1">These Terms apply to the tools for Unity distributed on their own by the Creator (including scripts, editor extensions, and the Unity packages containing them, as well as configuration files, manuals, and other files necessary for their operation or use; hereinafter the "Tool").
+ </li>
+ <li value="2">Whether an item included in the materials you have received constitutes the Tool can be confirmed by either of the following:
+  <ol>
+   <li value="1">The file containing these Terms (LICENSE.txt or a translation thereof) is placed in the same folder as the Tool, within the same Unity package, or within the same distribution package (such as a ZIP file); or</li>
+   <li value="2">The Creator states at the distribution source (a product page, a distribution page, or the like) that these Terms apply.</li>
+  </ol>
+ </li>
+ <li value="3">These Terms apply only to the Tool, and do not apply to 3D assets, executable files, or other items bundled with a product. The applicable terms for each bundled item are as set out in "Application to Bundled Items" of these Terms.
+ </li>
+ <li value="4">These Terms do not apply to components for Unity that are incorporated into assets distributed by the Creator and are not distributed on their own. Those are governed by the terms of use of the product that contains them.
+ </li>
+ <li value="5">These Terms do not name individual tools; they apply in common to every item that constitutes the Tool.
+ </li>
+ <li value="6">These Terms apply in the same form whether the Tool is distributed as part of a paid product or distributed free of charge on its own. The scope of prohibited acts does not change depending on whether consideration was paid. However, certain provisions have meaning only where the Tool was obtained for consideration (such as the provisions on refunds and on the range of persons who may use the Tool).
+ </li>
+ <li value="7">The guidelines that summarize these Terms in plain language are reference materials intended to aid understanding, and do not form part of these Terms. If the guidelines and these Terms conflict, these Terms prevail.
+ </li>
+</ol>
+<h2 id="definitions">Article 2 (Definitions)</h2>
+<p>The terms used in these Terms have the following meanings.</p>
+<ol>
+ <li value="1">"Tool" means the items set out in "Scope of Application" of these Terms.
+ </li>
+ <li value="2">"Creator" means Sangou Studio.
+ </li>
+ <li value="3">"User" means the individual or corporation that obtains, downloads, imports, or uses the Tool.
+ </li>
+ <li value="4">"Distribution source" means the place where the Creator distributes the Tool (a product page, a distribution page, the Creator's website, or the like).
+ </li>
+ <li value="5">"Output" means data created by the User using the Tool, and data rewritten by the Tool. A modified version of the Tool is treated as the Tool, not as Output.
+ </li>
+</ol>
+<h2 id="bundled-files">Article 3 (Application to Bundled Items)</h2>
+<ol>
+ <li value="1">A product or distribution package may contain files that are governed by different terms. In that case, the distinction is drawn as follows.
+  <ol>
+   <li value="1">These Terms apply to the Tool and its accompanying documents (readme, the file containing these Terms, THIRD-PARTY-NOTICES.txt, and the like).</li>
+   <li value="2">These Terms do not apply to executable files (.exe and the like). Those are governed by the "Sangou Studio Application Terms of Use". The modification permitted for the Tool does not extend to executable files.</li>
+   <li value="3">These Terms do not apply to created works such as 3D models, textures, materials, animations, and shaders. Those are governed by the license specified for each product.</li>
+   <li value="4">Third-party software incorporated into the Tool is governed by the respective licenses set out in "THIRD-PARTY-NOTICES.txt", and those licenses prevail over these Terms. However, these Terms apply to the Tool as a whole into which such software has been incorporated.</li>
+   <li value="5">Configuration files and log files created by the Tool on the User's computer may be handled freely by the User.</li>
+  </ol>
+ </li>
+ <li value="2">Representative examples under the preceding paragraph are as follows. Files not listed here are likewise determined according to the approach in the preceding paragraph.
+ </li>
+</ol>
+<div class="meta">
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Applicable terms</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unity package (.unitypackage), script (.cs)</td>
+<td>These Terms</td>
+</tr>
+<tr>
+<td>readme</td>
+<td>These Terms</td>
+</tr>
+<tr>
+<td>The file containing these Terms (LICENSE.txt, etc.)</td>
+<td>These Terms</td>
+</tr>
+<tr>
+<td>THIRD-PARTY-NOTICES.txt (the file itself)</td>
+<td>These Terms</td>
+</tr>
+<tr>
+<td>Executable file (.exe)</td>
+<td>Sangou Studio Application Terms of Use</td>
+</tr>
+<tr>
+<td>Third-party software incorporated into the Tool</td>
+<td>The respective licenses set out in THIRD-PARTY-NOTICES.txt</td>
+</tr>
+<tr>
+<td>Assets such as 3D models and textures</td>
+<td>The license specified for each product</td>
+</tr>
+<tr>
+<td>Generated files such as configuration files and log files</td>
+<td>May be handled freely by the User</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>Belongs to the User, as set out in "Copyright" of these Terms</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol>
+ <li value="3">What is permitted under one set of terms does not extend to the other. For example, even though modification is permitted under these Terms, that does not allow you to modify a bundled executable file.
+ </li>
+ <li value="4">If you are unsure which terms apply to a particular file, please contact us at the point of contact stated in "Contact" of these Terms.
+ </li>
+</ol>
+<h2 id="agreement">Article 4 (Agreement to These Terms)</h2>
+<ol>
+ <li value="1">The User is deemed to have agreed to these Terms at the time the User does any of the following:
+  <ol>
+   <li value="1">Purchases the Tool (including purchasing a product that contains the Tool);</li>
+   <li value="2">Downloads the Tool;</li>
+   <li value="3">Imports the Tool into a Unity project; or</li>
+   <li value="4">Uses the Tool.</li>
+  </ol>
+ </li>
+ <li value="2">At the time agreement is given under the preceding paragraph, a contract on the terms set out herein is formed between the Creator and the User.
+ </li>
+ <li value="3">If you cannot agree to these Terms, please do not purchase, download, import, or use the Tool. If you have already obtained it, please delete it without using it.
+ </li>
+ <li value="4">Even where the Tool has been deleted under the preceding paragraph, returns and refunds are handled as set out in "Returns and Refunds" of these Terms.
+ </li>
+ <li value="5">A minor who wishes to use the Tool must obtain the prior consent of a guardian (a person with parental authority or other statutory representative).
+ </li>
+</ol>
+<h2 id="license-grant">Article 5 (License Grant)</h2>
+<ol>
+ <li value="1">Subject to the User's compliance with these Terms, the Creator grants the User the right to use the Tool. This right is non-exclusive (meaning the Creator may grant the same right to other users), and may not be assigned or sublicensed to any third party. This right is granted for an indefinite term, except in the cases set out in "Termination of the License" of these Terms.
+ </li>
+ <li value="2">The right of use under the preceding paragraph arises only where the Tool was obtained from the distribution source. The Tool may not be used if it was obtained from anywhere other than the distribution source.
+ </li>
+ <li value="3">These Terms do not transfer any rights in the Tool to the User. Ownership of rights is as set out in "Copyright" of these Terms.
+ </li>
+ <li value="4">So long as the User does not act contrary to "Prohibited Acts" and "Rewriting of Files and Preservation of Data" of these Terms, the User may do the following. The following are examples and do not restrict any use that these Terms do not prohibit.
+  <ol>
+   <li value="1">Use the Tool for any purpose. Use as an individual and use in the business of a corporation or organization are both permitted.</li>
+   <li value="2">Use the Tool commercially. This includes monetized streams and videos, advertising, contract production work, events, and use in the business of a corporation.</li>
+   <li value="3">Publish screens of the Tool in streams, videos, screenshots, articles, and the like. Creating and publishing usage introductions or explanations is also free.</li>
+   <li value="4">Import the Tool onto any number of devices and into any number of projects, and make the copies necessary for that purpose, so long as it is within the scope of use by the User themselves. The User may import it into several Unity projects of their own and onto several computers, and may use them at the same time.</li>
+   <li value="5">Retain copies of the Tool for backup purposes.</li>
+   <li value="6">Modify the Tool. This includes rewriting it to suit the User's own workflow, and taking out only part of a script for the User's own work. However, icons, images, and other embedded materials are governed by "Prohibited Acts" of these Terms.</li>
+   <li value="7">Use the Output without restriction. This includes distributing the Output and including it in products for sale. These Terms do not restrict the use of the Output.</li>
+  </ol>
+ </li>
+ <li value="5">Where the Tool was obtained for consideration (including where a product containing the Tool was purchased), the Tool may be used by only one person per purchase. Where a corporation or organization makes the purchase, that person is one individual designated by that corporation or organization. If more than one person will use it, please purchase one copy for each such person. Where several people work on a single Unity project, please likewise purchase one copy for each such person. This restriction does not apply to the Tool where the Creator provides it free of charge.
+ </li>
+ <li value="6">If you wish to use the Tool on terms different from these Terms, please consult us individually at the point of contact stated in "Contact" of these Terms. Where the Creator consents in writing (including by e-mail), the terms so consented to prevail over these Terms. Such consent is valid only where it is given by the Creator from the point of contact stated in "Contact" of these Terms, and is effective only as between the Creator and the person who received it. If you claim that the Creator has given consent, you must show that consent when the Creator asks. Consent is not deemed to exist unless the Creator has expressly given it, and a lack of reply may not be treated as consent.
+ </li>
+</ol>
+<h2 id="prohibited-acts">Article 6 (Prohibited Acts)</h2>
+<ol>
+ <li value="1">With respect to distribution and transfer, the User must not do any of the following. The same applies to a modified version:
+  <ol>
+   <li value="1">Distribute, transfer, lend, sell, resell, or publish all or part of the Tool to a third party, whether for consideration or free of charge;</li>
+   <li value="2">Transfer or resell to a third party a product or distribution package containing the Tool;</li>
+   <li value="3">Place the Tool in a state where a third party can download or obtain it, including posting it to a file-sharing service, a public cloud-storage link, or a source-code hosting service. However, this does not apply where, in working jointly on a single Unity project, the Tool is placed as part of that project in a location accessible only to persons who have obtained the Tool from the distribution source;</li>
+   <li value="4">Send or post files of the Tool through a chat service or community server (including the file-transfer functions attached to messaging applications and voice-call services);</li>
+   <li value="5">Include the Tool in a product, asset, Unity package, or other distribution package that the User distributes, and hand it to a third party. This includes handing over deliverables that contain the Tool in contract production work;</li>
+   <li value="6">Allow anyone other than the User to operate the Tool, including allowing operation through a shared computer or through screen-sharing or remote-control functions; or</li>
+   <li value="7">Share or lend an account at the distribution source with or to a third party so as to let them obtain the Tool.</li>
+  </ol>
+ </li>
+ <li value="2">Each item of the preceding paragraph applies even in any of the following cases:
+  <ol>
+   <li value="1">The other party is a family member, friend, acquaintance, or other person with whom the User has a close relationship;</li>
+   <li value="2">The setting is private, with a limited number of participants;</li>
+   <li value="3">The other parties are few in number; or</li>
+   <li value="4">The purpose is non-commercial.</li>
+  </ol>
+ </li>
+ <li value="3">The preceding two paragraphs do not apply to the Output. The Output is handled as set out in "Copyright" of these Terms.
+ </li>
+ <li value="4">With respect to notices and embedded materials, the User must not do any of the following:
+  <ol>
+   <li value="1">Delete or alter copyright notices, the file containing these Terms, or "THIRD-PARTY-NOTICES.txt";</li>
+   <li value="2">Extract and use icons, images, screen designs, or other materials contained in the Tool, except where permitted under "License Grant" of these Terms for the purpose of introducing or explaining the Tool; or</li>
+   <li value="3">Represent the Tool as having been created by the User, or make any representation that would create the misimpression of a partnership, endorsement, or other relationship with the Creator.</li>
+  </ol>
+ </li>
+ <li value="5">In addition, the User must not do any of the following:
+  <ol>
+   <li value="1">Use the Tool to engage in acts that violate laws and regulations, or that are contrary to public order or good morals;</li>
+   <li value="2">Use the Tool to engage in acts that violate the terms of use of a service provided by a third party;</li>
+   <li value="3">Use the Tool to infringe the rights of the Creator or a third party, or to cause damage to such persons; or</li>
+   <li value="4">Interfere with the Creator's business.</li>
+  </ol>
+ </li>
+ <li value="6">The provisions of the preceding paragraphs do not apply to the extent that such acts are permitted by laws and regulations.
+ </li>
+ <li value="7">If you are unsure whether a particular act falls under this Article, please confirm in advance at the point of contact stated in "Contact" of these Terms.
+ </li>
+ <li value="8">The consequences of a User's breach of this Article are as set out in "Termination of the License" of these Terms.
+ </li>
+</ol>
+<h2 id="copyright">Article 7 (Copyright)</h2>
+<ol>
+ <li value="1">Copyrights and other intellectual property rights arising in relation to the Tool belong to the Creator. However, rights relating to third-party software incorporated into the Tool belong to the respective rights holders as set out in "THIRD-PARTY-NOTICES.txt". The Tool is protected by the copyright laws of each country and by international treaties.
+ </li>
+ <li value="2">These Terms license the use of the Tool, and do not transfer or assign the rights referred to in the preceding paragraph to the User. The same applies where the User has modified the Tool.
+ </li>
+ <li value="3">Rights relating to the name of the Tool, the name of the Creator, and their logos belong to the Creator. These Terms do not grant the User any right to use them. However, this does not apply to displaying them for the purpose of introducing or explaining the Tool as permitted under "License Grant" of these Terms.
+ </li>
+ <li value="4">Rights in the Output belong to the User. The User may distribute the Output and include it in products for sale. However, this does not apply to any portion of the Output that contains, as-is, materials or templates included in the Tool.
+ </li>
+ <li value="5">Even where the Creator makes use of requests, bug reports, or improvement suggestions provided by the User in the Tool or other works, the Creator owes no obligation to pay any consideration to the User.
+ </li>
+ <li value="6">The restrictions set out in these Terms take effect as an agreement between the Creator and the User, regardless of whether copyright or other rights are recognized in any particular part of the Tool.
+ </li>
+</ol>
+<h2 id="system-requirements">Article 8 (Operating Environment)</h2>
+<ol>
+ <li value="1">The operating environment supported by the Tool (the Unity version, other packages or assets required in advance, and the like) is stated at the distribution source or in the manual.
+ </li>
+ <li value="2">Before obtaining the Tool, please confirm that your environment satisfies the stated operating environment. The Creator makes no warranty whatsoever regarding operation in environments not stated, or in environments that do not satisfy the stated conditions.
+ </li>
+ <li value="3">Operational testing of the Tool is conducted in the Creator's own environment. Operation has not been confirmed in every environment.
+ </li>
+ <li value="4">Even where the stated operating environment is satisfied, the Tool may fail to operate properly, may cease to operate, or may operate in a limited manner, due to circumstances such as the following:
+  <ol>
+   <li value="1">Updates to, specification changes in, or the end of support for Unity or other software;</li>
+   <li value="2">Conflicts with other assets, tools, or packages installed in the same Unity project; or</li>
+   <li value="3">The configuration or settings of the User's devices, device failure, conflicts with other software, or constraints in the network environment.</li>
+  </ol>
+ </li>
+ <li value="5">The Creator cannot verify every combination of assets and tools. The combinations for which operation has been confirmed are limited to those stated at the distribution source or in the manual.
+ </li>
+ <li value="6">Where the Tool does not operate properly or ceases to operate, the measures taken by the Creator are as set out in "Updates and Support" of these Terms. The handling of damages is as set out in "Limitation of Liability" of these Terms.
+ </li>
+</ol>
+<h2 id="data-safety">Article 9 (Rewriting of Files and Preservation of Data)</h2>
+<ol>
+ <li value="1">The Tool may directly rewrite or delete files within the User's Unity project. There is no function to undo what has been rewritten or deleted.
+ </li>
+ <li value="2">The files targeted by the Tool, and the extent of what is actually rewritten, are determined by the User's operation. Please confirm before running the Tool that the target is what you intended.
+ </li>
+ <li value="3">Before using the Tool, please back up the project concerned. If you use version control, please commit your changes or otherwise put the project in a state from which the immediately preceding state can be restored.
+ </li>
+ <li value="4">If processing is interrupted (including by Unity closing, loss of power, or interference from other software), a partially rewritten state may remain. In that case as well, please restore from the backup under the preceding paragraph.
+ </li>
+ <li value="5">The User is responsible for preserving their own data, settings, and configuration. The User acknowledges in advance the need to make regular backup copies and to take other measures to avoid the consequences of data loss.
+ </li>
+ <li value="6">Where data is lost or corrupted through use of the Tool, the handling of damages is as set out in "No Warranty" and "Limitation of Liability" of these Terms.
+ </li>
+ <li value="7">The Tool is not designed for use in applications that have a serious effect on human life, body, or property (medical devices, the control of transportation or industrial equipment, and other equivalent uses). Please do not use it for such purposes.
+ </li>
+</ol>
+<h2 id="data-handling">Article 10 (Information Handled by the Tool)</h2>
+<ol>
+ <li value="1">The nature of the information handled by the Tool and how it is handled are stated at the distribution source or in the manual.
+ </li>
+ <li value="2">Where the Creator handles personal information in relation to the Tool, such handling is governed by separate provisions established by the Creator.
+ </li>
+</ol>
+<h2 id="updates-support">Article 11 (Updates and Support)</h2>
+<ol>
+ <li value="1">The Creator owes no obligation to provide updates to the Tool (meaning the addition or change of functions, the correction of defects, and the like; the same applies below). Whether updates are provided, and their content, timing, and method, are determined by the Creator.
+ </li>
+ <li value="2">The Tool has no auto-update function. Where an update is provided, the User should obtain it anew from the distribution source. The Creator does not individually notify Users that an update has been made.
+ </li>
+ <li value="3">No additional consideration is required to obtain an update. However, this does not apply where the Creator provides it as a separate product.
+ </li>
+ <li value="4">An update may change or remove functions of the Tool. Existing settings or data may also not be carried over. The Creator does not distribute prior versions or provide support relating to them. The Creator does not prevent the User from continuing to use a prior version.
+ </li>
+ <li value="5">These Terms also apply to use of the Tool after an update. The procedure for changing these Terms is as set out in "Changes to These Terms".
+ </li>
+ <li value="6">Where a serious defect (meaning a defect that renders a principal function of the Tool unusable) is found in the Tool, the Creator will endeavor to correct it. However, whether to correct it, and the content, timing, and method of correction, are determined by the Creator, and the Creator owes no obligation to make such correction.
+ </li>
+ <li value="7">The Creator may discontinue distribution of the Tool. Where distribution is discontinued, the Creator will endeavor, to the extent possible, to give advance notice at the distribution source or elsewhere. After distribution ends, the Tool can no longer be obtained from the distribution source, so we recommend that you retain a copy of the Tool in advance.
+ </li>
+ <li value="8">Even where distribution has ended, the right to use a Tool already obtained from the distribution source is not lost.
+ </li>
+ <li value="9">Inquiries regarding the Tool are accepted at the point of contact stated in "Contact" of these Terms. However, the Creator owes no obligation to respond to or act on them. Please make inquiries in Japanese. Inquiries in languages other than Japanese may not be able to be handled.
+ </li>
+ <li value="10">In particular, the Creator does not provide support for the following:
+  <ol>
+   <li value="1">Matters relating to environments that do not satisfy the stated operating environment;</li>
+   <li value="2">Matters relating to modification of the Tool, or to the use of a modified version;</li>
+   <li value="3">Matters relating to a Tool obtained from anywhere other than the distribution source;</li>
+   <li value="4">Matters relating to other assets, tools, or packages installed in the same Unity project;</li>
+   <li value="5">Matters not specific to the Tool, such as how to operate Unity; or</li>
+   <li value="6">Matters relating to the recovery of data that has been lost or corrupted.</li>
+  </ol>
+ </li>
+ <li value="11">This Article applies in the same way regardless of whether the Creator provided the Tool for consideration or free of charge.
+ </li>
+</ol>
+<h2 id="no-warranty">Article 12 (No Warranty)</h2>
+<ol>
+ <li value="1">The Tool is provided "as is". The Creator does not warrant the following with respect to the Tool:
+  <ol>
+   <li value="1">That it is fit for any particular purpose;</li>
+   <li value="2">That it is free from defects, errors, or incorrect operation;</li>
+   <li value="3">That it will operate without interruption;</li>
+   <li value="4">That the results or effects expected by the User will be obtained;</li>
+   <li value="5">That it will work without trouble with other assets, tools, or packages, or that such interoperation will be maintained in the future; or</li>
+   <li value="6">That data rewritten or handled by the Tool will not be lost or corrupted.</li>
+  </ol>
+ </li>
+ <li value="2">The Creator has not intentionally included any malicious program in the Tool. However, this is not a warranty of absolute safety.
+ </li>
+ <li value="3">To the best of the Creator's knowledge, the Tool does not infringe the rights of any third party. However, this is not a warranty to that effect.
+ </li>
+ <li value="4">The description of the Tool stated at the distribution source and in the manual reflects the information as of the time of writing. Due to updates or changes in the operating environment, actual behavior may differ from the description.
+ </li>
+ <li value="5">The Creator makes no warranty as to the content of introductory articles, videos, explanations, or other materials created by persons other than the Creator.
+ </li>
+ <li value="6">This Article does not exclude any liability that the Creator bears under laws and regulations.
+ </li>
+ <li value="7">This Article applies in the same way regardless of whether the Creator provided the Tool for consideration or free of charge.
+ </li>
+</ol>
+<h2 id="liability">Article 13 (Limitation of Liability)</h2>
+<ol>
+ <li value="1">Where the User is a consumer (as defined in Article 2, Paragraph 1 of the Consumer Contract Act of Japan), the Creator is liable for damages incurred by the User in relation to the Tool only within the following scope, except where the Creator acted with intent or gross negligence:
+  <ol>
+   <li value="1">Compensation is limited to ordinary damages. Lost profits, loss of business opportunity, damages arising from the loss or corruption of data, damages based on claims by third parties, and other damages arising from special circumstances are excluded.</li>
+   <li value="2">The amount of compensation is capped at the higher of the amount the User paid as consideration for the Tool or for a product containing the Tool, or JPY 1,000.</li>
+  </ol>
+ </li>
+ <li value="2">Where the User is not a consumer, the Creator bears no liability for damages incurred by the User in relation to the Tool. However, this does not apply where the Creator acted with intent or gross negligence.
+ </li>
+ <li value="3">The Creator bears no liability for damages arising from the following causes. However, this does not apply where the Creator acted with intent or gross negligence:
+  <ol>
+   <li value="1">The User's breach of these Terms;</li>
+   <li value="2">Use of the Tool in an environment that does not satisfy the stated operating environment;</li>
+   <li value="3">Use of a Tool obtained from anywhere other than the distribution source;</li>
+   <li value="4">Failure to take the backup set out in "Rewriting of Files and Preservation of Data" of these Terms; or</li>
+   <li value="5">Other causes attributable to the User.</li>
+  </ol>
+ </li>
+ <li value="4">If a dispute arises between the User and a third party in relation to use of the Tool, the User shall resolve it at the User's own responsibility and expense. Where such dispute arises from a cause attributable to the User and the Creator receives a claim from a third party, the User shall compensate the Creator for the damages incurred by the Creator.
+ </li>
+ <li value="5">Where the Tool has a nonconformity with the contract, the matter is handled as set out in "Returns and Refunds" of these Terms.
+ </li>
+ <li value="6">The provisions of this Article do not apply to the extent that they are rendered void or inapplicable by laws and regulations.
+ </li>
+</ol>
+<h2 id="refunds">Article 14 (Returns and Refunds)</h2>
+<ol>
+ <li value="1">Because the Tool is provided by download, it cannot be returned.
+ </li>
+ <li value="2">Cancellation of a purchase, termination of the contract, or a refund for the User's own convenience cannot be accepted. "The User's own convenience" means, for example, the following cases:
+  <ol>
+   <li value="1">The User did not check the operating environment, or checked it incorrectly;</li>
+   <li value="2">The content differed from what the User expected;</li>
+   <li value="3">The User purchased it by mistake;</li>
+   <li value="4">The User no longer needs it; or</li>
+   <li value="5">The User did not use the Tool.</li>
+  </ol>
+ </li>
+ <li value="3">Depending on the distribution source, its systems may not permit refund procedures after purchase. Whether a refund through the distribution source is possible, and the procedure for it, are governed by the rules of the distribution source.
+ </li>
+ <li value="4">Notwithstanding the preceding two paragraphs, where the Tool, at the time it was provided to the User, had a material nonconformity with the contract and the Creator does not correct it within a reasonable period, the Creator will, upon request from the User, refund the consideration or take other appropriate measures. Where a refund through the distribution source is not possible, the Creator will do so by another method, arranged in consultation with the User.
+ </li>
+ <li value="5">Where the Tool ceases to operate properly due to circumstances arising after it was provided (including the circumstances listed in "Operating Environment" of these Terms), this does not constitute a "material nonconformity with the contract" under the preceding paragraph. No refund can be given in such a case.
+ </li>
+ <li value="6">Where the Creator becomes aware that the Tool does not operate properly and does not correct it, the Creator will endeavor to post a notice to that effect at the distribution source or to suspend distribution.
+ </li>
+ <li value="7">The refund provisions of this Article do not apply to a Tool provided by the Creator free of charge.
+ </li>
+ <li value="8">Where a refund has been made for the Tool or for a product containing the Tool, the User loses the right to use the Tool. In that case, the User must delete the Tool and all copies of it. This does not apply to the Output.
+ </li>
+</ol>
+<h2 id="termination">Article 15 (Termination of the License)</h2>
+<ol>
+ <li value="1">Where the User breaches the provisions on distribution and transfer, or the provisions on notices and embedded materials, within "Prohibited Acts" of these Terms, such breach shall be treated as a material breach that cannot be cured by demand, and the Creator may immediately terminate the license granted to that User without notice or demand.
+ </li>
+ <li value="2">Where the User breaches these Terms in a respect other than the preceding paragraph, the Creator may demand correction within a reasonable period it specifies. If the breach is not corrected within that period, the Creator may terminate the license.
+ </li>
+ <li value="3">Where the license is terminated, the User must immediately cease using the Tool and delete the Tool and all copies of it (including modified versions). This does not apply to the Output.
+ </li>
+ <li value="4">Even where the license is terminated, the Creator will not refund any consideration.
+ </li>
+ <li value="5">Termination of the license does not preclude the Creator's claims for damages or other rights against the User.
+ </li>
+ <li value="6">The Creator may refuse to provide the Tool thereafter to a User whose license has been terminated under this Article.
+ </li>
+</ol>
+<h2 id="changes">Article 16 (Changes to These Terms)</h2>
+<ol>
+ <li value="1">The Creator may change these Terms without obtaining the individual consent of Users where either of the following applies:
+  <ol>
+   <li value="1">The change is in the general interest of Users; or</li>
+   <li value="2">The change does not run counter to the purpose of these Terms and is reasonable in light of the necessity of the change, the appropriateness of the content after the change, and other circumstances.</li>
+  </ol>
+ </li>
+ <li value="2">Where the Creator changes these Terms, it will set an effective date and post the following at the location stated at the beginning of these Terms, at least 14 days before that effective date:
+  <ol>
+   <li value="1">That these Terms will be changed;</li>
+   <li value="2">The content after the change; and</li>
+   <li value="3">The effective date.</li>
+  </ol>
+ </li>
+ <li value="3">If the posting under the preceding paragraph is not made by the effective date, the change does not take effect.
+ </li>
+ <li value="4">From the effective date, the amended Terms apply to all copies of the Tool, including copies already distributed.
+ </li>
+ <li value="5">If you cannot agree to the amended Terms, please stop using the Tool and delete it.
+ </li>
+ <li value="6">The Creator will endeavor to maintain the location where these Terms are posted for a reasonable period even after distribution of the Tool has ended.
+ </li>
+</ol>
+<h2 id="general">Article 17 (Miscellaneous)</h2>
+<ol>
+ <li value="1">The Japanese text of these Terms is authoritative. Where the Creator provides a version in a language other than Japanese, that version is a reference translation, and if there is any discrepancy in content, the Japanese version prevails. The Creator does not warrant the accuracy of, and bears no responsibility for, translations prepared by persons other than the Creator.
+ </li>
+ <li value="2">Even if part of these Terms is rendered void by laws and regulations, the remaining parts remain in effect. In that case, the void part shall be read as the valid content closest to its intent.
+ </li>
+ <li value="3">Even if part of these Terms is rendered void only as between the Creator and a particular User, it remains in effect as between the Creator and other Users.
+ </li>
+ <li value="4">Even if the Creator does not exercise, or delays exercising, a right under these Terms, this shall not be deemed a waiver of that right.
+ </li>
+ <li value="5">The provisions of these Terms concerning copyright, prohibited acts, rewriting of files and preservation of data, no warranty, limitation of liability, returns and refunds, termination of the license, this Article, and governing law and jurisdiction, together with the provisions necessary to interpret them, survive termination of the license.
+ </li>
+ <li value="6">Where the Creator transfers the business relating to the provision of the Tool to a third party, the Creator may transfer its status, rights, and obligations under these Terms to that third party, and the User consents to this in advance.
+ </li>
+</ol>
+<h2 id="governing-law">Article 18 (Governing Law and Jurisdiction)</h2>
+<ol>
+ <li value="1">These Terms and the use of the Tool are governed by the laws of Japan.
+ </li>
+ <li value="2">If any question or dispute arises regarding these Terms or the use of the Tool, the Creator and the User shall first endeavor to resolve it through good-faith consultation.
+ </li>
+ <li value="3">If litigation becomes necessary, the Tokyo District Court shall be the exclusive court of first instance by agreement.
+ </li>
+ <li value="4">The preceding paragraphs do not prejudice any rights or court jurisdiction granted to a User who is a consumer under laws and regulations.
+ </li>
+</ol>
+<h2 id="contact">Article 19 (Contact)</h2>
+<ol>
+ <li value="1">The point of contact for inquiries regarding the Tool and these Terms is stated at the location where these Terms are posted, and at the distribution source or in the manual.
+ </li>
+ <li value="2">Providing the following information when making an inquiry helps us respond smoothly:
+  <ol>
+   <li value="1">The name and version of the Tool;</li>
+   <li value="2">Your Unity version, and the other assets and tools you have installed; and</li>
+   <li value="3">The nature of the problem (and the content of any message displayed).</li>
+  </ol>
+ </li>
+ <li value="3">Please make inquiries in Japanese. As set out in "Updates and Support" of these Terms, the Creator owes no obligation to respond or to take action.
+ </li>
+ <li value="4">Consultations regarding use on terms different from these Terms are also accepted at this point of contact.
+ </li>
+</ol>
+<hr>
+<p>These Terms are not sponsored by or affiliated with Unity Technologies or its affiliates. Unity is a trademark or registered trademark of Unity Technologies or its affiliates in the U.S. and elsewhere.</p>
+<p>© 2026 Sangou Studio</p>
+<div class="pagelink"><p>We also provide <a href="/guide/en/">Usage Guidelines (Q&amp;A)</a> in plain language.</p></div>
+<div class="pagelink"><p>Assets such as 3D models are governed by the <a href="/asset/en/">Asset Terms of Use</a>. Bundled applications are governed by the <a href="/app/en/">Application Terms of Use</a>.</p></div>
+</main>
+<aside class="toc-right">
+<nav class="toc">
+<p>Contents</p>
+<ol>
+<li><a href="#scope">Article 1 (Scope of Application)</a></li>
+<li><a href="#definitions">Article 2 (Definitions)</a></li>
+<li><a href="#bundled-files">Article 3 (Application to Bundled Items)</a></li>
+<li><a href="#agreement">Article 4 (Agreement to These Terms)</a></li>
+<li><a href="#license-grant">Article 5 (License Grant)</a></li>
+<li><a href="#prohibited-acts">Article 6 (Prohibited Acts)</a></li>
+<li><a href="#copyright">Article 7 (Copyright)</a></li>
+<li><a href="#system-requirements">Article 8 (Operating Environment)</a></li>
+<li><a href="#data-safety">Article 9 (Rewriting of Files and Preservation of Data)</a></li>
+<li><a href="#data-handling">Article 10 (Information Handled by the Tool)</a></li>
+<li><a href="#updates-support">Article 11 (Updates and Support)</a></li>
+<li><a href="#no-warranty">Article 12 (No Warranty)</a></li>
+<li><a href="#liability">Article 13 (Limitation of Liability)</a></li>
+<li><a href="#refunds">Article 14 (Returns and Refunds)</a></li>
+<li><a href="#termination">Article 15 (Termination of the License)</a></li>
+<li><a href="#changes">Article 16 (Changes to These Terms)</a></li>
+<li><a href="#general">Article 17 (Miscellaneous)</a></li>
+<li><a href="#governing-law">Article 18 (Governing Law and Jurisdiction)</a></li>
+<li><a href="#contact">Article 19 (Contact)</a></li>
+</ol>
+</nav>
+</aside>
+</div>
+</body>
+</html>

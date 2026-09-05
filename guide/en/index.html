@@ -22,7 +22,7 @@
   --accent-bg: #eaf2fb;
   --radius: 10px;
   --measure: 44rem;
-}
+  --bar: 3.4rem;       --toc: 15rem;      }
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -346,18 +346,60 @@ main > p:last-child {
   color: var(--fg-muted);
 }
 
+
+.shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--toc);
+  gap: 2rem;
+  max-width: 64rem;
+  margin: 0 auto;
+  align-items: start;
+}
+.shell > main { grid-column: 1; grid-row: 1; margin: 0 auto; }
+.shell > .toc-right {
+  grid-column: 2;
+  grid-row: 1;
+  position: sticky;
+  top: var(--bar);
+  max-height: calc(100vh - var(--bar));
+  max-height: calc(100dvh - var(--bar));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 2.2rem 0 3rem;
+}
+
 nav.toc {
-  margin: 2rem 0 0;
+  margin: 0;
   padding: 1.1rem 1.3rem;
   background: var(--bg-soft);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius);
+  font-size: 0.9rem;
 }
 nav.toc > p { margin: 0 0 0.6rem; font-weight: 700; font-size: 0.95rem; }
 nav.toc ol { margin: 0; padding-left: 0; list-style: none; }
 nav.toc li { margin: 0.3rem 0; }
 nav.toc a { color: var(--fg); text-decoration: none; }
 nav.toc a:hover { color: var(--accent); text-decoration: underline; }
+
+@media (max-width: 68rem) {
+  .shell { grid-template-columns: minmax(0, 1fr); gap: 0; max-width: none; }
+  .shell > main { grid-column: 1; grid-row: 2; }
+  .shell > .toc-right {
+    grid-column: 1;
+    grid-row: 1;
+    position: static;
+    max-height: none;
+    overflow: visible;
+    padding: 0 1.1rem;
+  }
+  nav.toc {
+    max-width: var(--measure);
+    margin: 1.8rem auto 0;
+    max-height: 13rem;
+    overflow-y: auto;
+  }
+}
 
 .pagelink {
   margin: 1.1rem 0 0;
@@ -420,6 +462,7 @@ footer a { color: var(--fg-muted); }
 <ul>
 <li><a href="/asset/en/">Asset Terms of Use</a></li>
 <li><a href="/app/en/">Application Terms of Use</a></li>
+<li><a href="/unity/en/">Terms of Use for Unity Tools</a></li>
 <li><a href="/guide/en/" aria-current="page">Guidelines (Q&A)</a></li>
 </ul>
 </nav>
@@ -433,6 +476,7 @@ footer a { color: var(--fg-muted); }
 <ul>
 <li><a href="/asset/en/">Asset Terms of Use</a></li>
 <li><a href="/app/en/">Application Terms of Use</a></li>
+<li><a href="/unity/en/">Terms of Use for Unity Tools</a></li>
 <li><a href="/guide/en/" aria-current="page">Guidelines (Q&A)</a></li>
 </ul>
 <div class="langs">
@@ -446,25 +490,28 @@ footer a { color: var(--fg-muted); }
 <nav class="crumb" aria-label="breadcrumb">
 <a href="/en/">Sangou Studio Legal</a><span aria-hidden="true">›</span><span aria-current="page">Guidelines (Q&A)</span>
 </nav>
+<div class="shell">
 <main>
 <h1>Sangou Studio Usage Guidelines (Q&amp;A)</h1>
 <p>These Guidelines are a reference summary of our Terms of Use, written in plain language.</p>
 <p>For the official position, the respective Terms of Use prevail.</p>
 <ul>
-<li class="row"><span class="label">Application Terms of Use</span><span class="pad">　</span><a href="https://legal.sangoustudio.com/app/en/">https://legal.sangoustudio.com/app/en/</a></li>
 <li class="row"><span class="label">Asset Terms of Use</span><span class="pad">　　　　</span><a href="https://legal.sangoustudio.com/asset/en/">https://legal.sangoustudio.com/asset/en/</a></li>
+<li class="row"><span class="label">Terms of Use for Unity Tools</span><span class="pad">　</span><a href="https://legal.sangoustudio.com/unity/en/">https://legal.sangoustudio.com/unity/en/</a></li>
+<li class="row"><span class="label">Application Terms of Use</span><span class="pad">　</span><a href="https://legal.sangoustudio.com/app/en/">https://legal.sangoustudio.com/app/en/</a></li>
 </ul>
 <blockquote><p><strong>About this translation:</strong> This document is an English reference translation of the Japanese original. Only the Japanese text is authoritative. If there is any discrepancy between this translation and the Japanese text, the Japanese text prevails.</p></blockquote>
 <hr>
-<h2>There are two sets of rules</h2>
-<p>Even within a single product, different rules apply to <strong>Apps</strong> (executable files for Windows) and to <strong>Assets</strong> (3D models, textures, materials, Unity packages, and the like).</p>
-<p><strong>Modification, in particular, works in opposite directions.</strong> Assets may be modified; Apps may not.</p>
+<h2 id="three-rules">There are three sets of rules</h2>
+<p>Even within a single product, different rules apply to <strong>Assets</strong> (3D models, textures, materials, Unity packages, and the like), <strong>Unity Tools</strong> (Unity editor extensions distributed on their own), and <strong>Apps</strong> (executable files for Windows).</p>
+<p><strong>Modification, in particular, differs.</strong> Assets and Unity Tools may be modified; Apps may not.</p>
 <div class="meta">
 <table>
 <thead>
 <tr>
 <th></th>
 <th>Asset</th>
+<th>Unity Tool</th>
 <th>App</th>
 </tr>
 </thead>
@@ -473,14 +520,17 @@ footer a { color: var(--fg-muted); }
 <td>Commercial use</td>
 <td>Yes</td>
 <td>Yes</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>Streaming, video, social media posts</td>
 <td>Yes</td>
 <td>Yes</td>
+<td>Yes</td>
 </tr>
 <tr>
 <td>Modification</td>
+<td><strong>Yes</strong></td>
 <td><strong>Yes</strong></td>
 <td><strong>No</strong></td>
 </tr>
@@ -488,9 +538,11 @@ footer a { color: var(--fg-muted); }
 <td>Redistribution</td>
 <td>No</td>
 <td>No</td>
+<td>No</td>
 </tr>
 <tr>
 <td>Transfer, resale, lending</td>
+<td>No</td>
 <td>No</td>
 <td>No</td>
 </tr>
@@ -498,43 +550,46 @@ footer a { color: var(--fg-muted); }
 <td>Number of people who may use one purchase</td>
 <td>1</td>
 <td>1</td>
+<td>1</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>If a product does not include an App, you can skip the "About Apps" section.</p>
+<p>If your product does not include one of these, you can skip that section.</p>
 <p><strong>■ Please note</strong></p>
 <p>If you use our products while wearing VR equipment, make sure you have enough space around you.</p>
 <p>If you feel unwell, stop using them immediately.</p>
+<p>Unity Tools rewrite files in your Unity project directly. There is no undo.</p>
+<p>Please back up your project before you use them.</p>
 <hr>
-<h2>Common to both</h2>
+<h2 id="common">Common to all</h2>
 <h3>What you can do</h3>
 <div class="qa">
 <h4 class="q">Q. Can I use these commercially?</h4>
 <p>A. Yes. Monetized streams and videos, advertising, contract production work, events, and use in your company's business are all fine.</p>
-<p>However, when you hand over deliverables in contract production work or similar, <strong>you may not include the App or Asset data itself in what you hand over.</strong></p>
+<p>However, when you hand over deliverables in contract production work or similar, <strong>you may not include the Asset, Unity Tool, or App data itself in what you hand over.</strong></p>
 </div>
 <div class="qa">
 <h4 class="q">Q. Who owns the rights to the images I capture or the data I create?</h4>
-<p>A. You do. Sangou Studio claims no rights in what you create. The App is simply a tool.</p>
+<p>A. You do. Sangou Studio claims no rights in what you create. Apps and Unity Tools are simply tools.</p>
 <p>Two things are handled separately, however:</p>
 <ul>
-<li>Any part that contains, as-is, materials or templates that came with the App</li>
+<li>Any part that contains, as-is, materials or templates that came with the App or Unity Tool</li>
 <li>The Sangou Studio Assets themselves as they appear in your images or videos</li>
 </ul>
 <p>The rights in the Assets that appear remain with Sangou Studio, but <strong>you may publish and sell images and videos that contain them.</strong></p>
 </div>
 <div class="qa">
 <h4 class="q">Q. Three people at my company want to use this. What should we do?</h4>
-<p>A. Please purchase three copies. For both Apps and Assets, one purchase may be used by one person. If you need different terms, please get in touch.</p>
+<p>A. Please purchase three copies. For Assets, Unity Tools, and Apps alike, one purchase may be used by one person. If you need different terms, please get in touch.</p>
 </div>
 <div class="qa">
 <h4 class="q">Q. I use two computers. Can I use it on both?</h4>
-<p>A. If you are the one using it, there is no limit on the number of devices. You may also use them at the same time.</p>
+<p>A. If you are the one using it, there is no limit on the number of devices. You may also use them at the same time. <strong>However, you may not let anyone else operate it.</strong> This applies to shared computers and to screen-sharing or remote control alike.</p>
 </div>
 <div class="qa">
 <h4 class="q">Q. May I keep a backup?</h4>
-<p>A. Please do. Even if we stop distributing a product, your right to use what you already obtained remains. Note, however, that depending on the store, re-downloading may become unavailable.</p>
+<p>A. Please do. <strong>This covers copies you keep yourself only;</strong> you may not leave a copy with anyone else. Even if we stop distributing a product, your right to use what you already obtained remains. Note, however, that depending on the store, re-downloading may become unavailable.</p>
 </div>
 <h3>What you cannot do</h3>
 <div class="qa">
@@ -568,7 +623,7 @@ footer a { color: var(--fg-muted); }
 <h3>When something stops working</h3>
 <div class="qa">
 <h4 class="q">Q. If a VRChat update or similar breaks it, will you fix it?</h4>
-<p>A. We cannot promise that. This is the same for both Apps and Assets.</p>
+<p>A. We cannot promise that. This is the same for Assets, Unity Tools, and Apps.</p>
 <p>If we decide not to fix it, we will either stop selling the product or post a notice on the distribution page.</p>
 <p>Please note that refunds are not available in this case, because the product worked correctly at the time you purchased it.</p>
 </div>
@@ -600,11 +655,12 @@ footer a { color: var(--fg-muted); }
 <div class="qa">
 <h4 class="q">Q. What happens if I break the Terms?</h4>
 <p>A. Your right to use the product ends.</p>
-<p>For serious breaches such as redistribution, modification, or analysis, it may end without prior notice.</p>
-<p>If it ends, please delete the App or Asset and all copies of it. We cannot refund what you have paid.</p>
+<p>For serious breaches such as redistribution, it may end without prior notice. The same applies to removing a copyright notice, presenting our work as your own, and modifying or analysing an App.</p>
+<p>If it ends, please delete the Asset, Unity Tool, or App and all copies of it. We cannot refund what you have paid.</p>
+<p>You do not need to delete data you created with a Unity Tool.</p>
 </div>
 <hr>
-<h2>About Assets</h2>
+<h2 id="assets">About Assets</h2>
 <h3>Using and showing</h3>
 <div class="qa">
 <h4 class="q">Q. May I upload an Asset to VRChat and use it there?</h4>
@@ -685,7 +741,75 @@ footer a { color: var(--fg-muted); }
 <p>A. No.</p>
 </div>
 <hr>
-<h2>About Apps</h2>
+<h2 id="unity-tools">About Unity Tools</h2>
+<h3>Modification</h3>
+<div class="qa">
+<h4 class="q">Q. May I modify a Unity Tool inside my own project?</h4>
+<p>A. Yes. Please change it freely to suit your workflow. <strong>Taking out only part of a script for your own work is fine as well.</strong> However, you may not take out icons, images, or other embedded materials.</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. May I give the modified version to a friend?</h4>
+<p>A. No. Neither the original nor a modified version may be passed on to anyone else.</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. May I bundle this tool with an avatar or package I distribute?</h4>
+<p>A. No. The people who receive it must purchase or obtain it themselves from a Sangou Studio product page (on BOOTH or the like), whether you distribute your work free of charge or for a fee.</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. May I show the tool on a stream or in a blog post?</h4>
+<p>A. Please do. You are also free to create and publish introductions or explanations of how to use it.</p>
+</div>
+<h3>What you create</h3>
+<div class="qa">
+<h4 class="q">Q. May I include files this tool fixed in a product I sell?</h4>
+<p>A. Yes. The data you create with the tool, and the data the tool rewrites, are yours. <strong>However, any part that contains, as-is, materials or templates that came with the tool is treated separately.</strong> The rights in that part belong to Sangou Studio.</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. If I receive a refund, do I have to delete what I created?</h4>
+<p>A. No. You only delete the tool itself. What you created remains yours to use.</p>
+</div>
+<h3>Using it in a team</h3>
+<div class="qa">
+<h4 class="q">Q. Two of us work on one project. How many copies do we need?</h4>
+<p>A. Two. If several people open Unity while the tool is in the project, please purchase one copy per person.</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. Do free tools also need one copy per person?</h4>
+<p>A. No. Tools we provide free of charge have no limit on the number of people.</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. May we keep the tool in a private repository such as GitHub and share it within our team?</h4>
+<p>A. Yes, provided that <strong>everyone with access has purchased or obtained the tool for themselves from a Sangou Studio product page (on BOOTH or the like).</strong> A copy passed on from someone else, or one obtained from anywhere other than Sangou Studio, does not count. If even one person without it can reach the repository, that counts as redistribution.</p>
+</div>
+<h3>Keeping your data safe</h3>
+<div class="qa">
+<h4 class="q">Q. Can I undo the changes?</h4>
+<p>A. No. You will need to restore from a backup.</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. How should I back up?</h4>
+<p>A. Copy the whole project folder, or, if you use version control, commit your changes.</p>
+<p><strong>Please confirm once that you can actually restore from it.</strong> A backup you cannot restore is not a backup.</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. The process stopped partway through.</h4>
+<p>A. Restore from your backup. Running it again will not necessarily fix it.</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. Can you recover data that was lost?</h4>
+<p>A. No. We are also unable to respond to enquiries about data recovery.</p>
+</div>
+<div class="qa">
+<h4 class="q">Q. Can I use it on a project inside OneDrive or Dropbox?</h4>
+<p>A. We do not recommend it. If syncing runs while files are being rewritten, a partially written state may be saved. Please move the project out of the synced folder first.</p>
+</div>
+<h3>Environment</h3>
+<div class="qa">
+<h4 class="q">Q. Is it safe to use alongside other assets?</h4>
+<p>A. We cannot test every combination. The combinations we have checked are listed in the manual.</p>
+</div>
+<hr>
+<h2 id="apps">About Apps</h2>
 <div class="qa">
 <h4 class="q">Q. May I modify an App for my own use, or analyze what's inside it?</h4>
 <p>A. No. That said, rewriting config.json or log files does not count as modification, so please feel free.</p>
@@ -712,10 +836,25 @@ footer a { color: var(--fg-muted); }
 <hr>
 <p>For the official position, please refer to the respective Terms of Use.</p>
 <ul>
-<li class="row"><span class="label">Application Terms of Use</span><span class="pad">　</span><a href="https://legal.sangoustudio.com/app/en/">https://legal.sangoustudio.com/app/en/</a></li>
 <li class="row"><span class="label">Asset Terms of Use</span><span class="pad">　　　　</span><a href="https://legal.sangoustudio.com/asset/en/">https://legal.sangoustudio.com/asset/en/</a></li>
+<li class="row"><span class="label">Terms of Use for Unity Tools</span><span class="pad">　</span><a href="https://legal.sangoustudio.com/unity/en/">https://legal.sangoustudio.com/unity/en/</a></li>
+<li class="row"><span class="label">Application Terms of Use</span><span class="pad">　</span><a href="https://legal.sangoustudio.com/app/en/">https://legal.sangoustudio.com/app/en/</a></li>
 </ul>
+<p>These Guidelines are not sponsored by or affiliated with Unity Technologies or its affiliates. Unity is a trademark or registered trademark of Unity Technologies or its affiliates in the U.S. and elsewhere.</p>
 <p>© 2026 Sangou Studio</p>
 </main>
+<aside class="toc-right">
+<nav class="toc">
+<p>Contents</p>
+<ol>
+<li><a href="#three-rules">There are three sets of rules</a></li>
+<li><a href="#common">Common to all</a></li>
+<li><a href="#assets">About Assets</a></li>
+<li><a href="#unity-tools">About Unity Tools</a></li>
+<li><a href="#apps">About Apps</a></li>
+</ol>
+</nav>
+</aside>
+</div>
 </body>
 </html>

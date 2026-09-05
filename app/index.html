@@ -22,7 +22,7 @@
   --accent-bg: #eaf2fb;
   --radius: 10px;
   --measure: 44rem;
-}
+  --bar: 3.4rem;       --toc: 15rem;      }
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -346,18 +346,60 @@ main > p:last-child {
   color: var(--fg-muted);
 }
 
+
+.shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--toc);
+  gap: 2rem;
+  max-width: 64rem;
+  margin: 0 auto;
+  align-items: start;
+}
+.shell > main { grid-column: 1; grid-row: 1; margin: 0 auto; }
+.shell > .toc-right {
+  grid-column: 2;
+  grid-row: 1;
+  position: sticky;
+  top: var(--bar);
+  max-height: calc(100vh - var(--bar));
+  max-height: calc(100dvh - var(--bar));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 2.2rem 0 3rem;
+}
+
 nav.toc {
-  margin: 2rem 0 0;
+  margin: 0;
   padding: 1.1rem 1.3rem;
   background: var(--bg-soft);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius);
+  font-size: 0.9rem;
 }
 nav.toc > p { margin: 0 0 0.6rem; font-weight: 700; font-size: 0.95rem; }
 nav.toc ol { margin: 0; padding-left: 0; list-style: none; }
 nav.toc li { margin: 0.3rem 0; }
 nav.toc a { color: var(--fg); text-decoration: none; }
 nav.toc a:hover { color: var(--accent); text-decoration: underline; }
+
+@media (max-width: 68rem) {
+  .shell { grid-template-columns: minmax(0, 1fr); gap: 0; max-width: none; }
+  .shell > main { grid-column: 1; grid-row: 2; }
+  .shell > .toc-right {
+    grid-column: 1;
+    grid-row: 1;
+    position: static;
+    max-height: none;
+    overflow: visible;
+    padding: 0 1.1rem;
+  }
+  nav.toc {
+    max-width: var(--measure);
+    margin: 1.8rem auto 0;
+    max-height: 13rem;
+    overflow-y: auto;
+  }
+}
 
 .pagelink {
   margin: 1.1rem 0 0;
@@ -420,6 +462,7 @@ footer a { color: var(--fg-muted); }
 <ul>
 <li><a href="/asset/">アセット利用規約</a></li>
 <li><a href="/app/" aria-current="page">アプリケーション利用規約</a></li>
+<li><a href="/unity/">Unity向けツール利用規約</a></li>
 <li><a href="/guide/">ガイドライン（Q&A）</a></li>
 </ul>
 </nav>
@@ -433,6 +476,7 @@ footer a { color: var(--fg-muted); }
 <ul>
 <li><a href="/asset/">アセット利用規約</a></li>
 <li><a href="/app/" aria-current="page">アプリケーション利用規約</a></li>
+<li><a href="/unity/">Unity向けツール利用規約</a></li>
 <li><a href="/guide/">ガイドライン（Q&A）</a></li>
 </ul>
 <div class="langs">
@@ -446,6 +490,7 @@ footer a { color: var(--fg-muted); }
 <nav class="crumb" aria-label="breadcrumb">
 <a href="/">三号スタジオ ライセンス</a><span aria-hidden="true">›</span><span aria-current="page">アプリケーション利用規約</span>
 </nav>
+<div class="shell">
 <main>
 <h1>三号スタジオ アプリケーション利用規約</h1>
 <div class="meta">
@@ -497,30 +542,6 @@ footer a { color: var(--fg-muted); }
 </table>
 </div>
 <div class="notice"><p><strong>改訂のお知らせ：</strong> 現在、改訂の予定はありません。</p></div>
-<nav class="toc">
-<p>目次</p>
-<ol>
-<li><a href="#scope">第1条（適用範囲）</a></li>
-<li><a href="#definitions">第2条（定義）</a></li>
-<li><a href="#bundled-files">第3条（同梱物ごとの適用関係）</a></li>
-<li><a href="#agreement">第4条（規約への同意）</a></li>
-<li><a href="#license-grant">第5条（使用許諾）</a></li>
-<li><a href="#prohibited-acts">第6条（禁止事項）</a></li>
-<li><a href="#copyright">第7条（著作権）</a></li>
-<li><a href="#system-requirements">第8条（動作環境）</a></li>
-<li><a href="#safety">第9条（安全上の注意）</a></li>
-<li><a href="#data-handling">第10条（本アプリが取り扱う情報）</a></li>
-<li><a href="#updates-support">第11条（アップデートとサポート）</a></li>
-<li><a href="#no-warranty">第12条（無保証）</a></li>
-<li><a href="#liability">第13条（責任の制限）</a></li>
-<li><a href="#refunds">第14条（返品と返金）</a></li>
-<li><a href="#termination">第15条（使用許諾の終了）</a></li>
-<li><a href="#changes">第16条（この規約の変更）</a></li>
-<li><a href="#general">第17条（その他の取り決め）</a></li>
-<li><a href="#governing-law">第18条（準拠法と裁判管轄）</a></li>
-<li><a href="#contact">第19条（お問い合わせ）</a></li>
-</ol>
-</nav>
 <p>この規約は、三号スタジオ（以下「制作者」）が配布するアプリケーションを使うときのルールを定めた、制作者と利用者との間の契約です。</p>
 <p>内容をご確認のうえ、ご利用ください。</p>
 <p>この規約をやさしくまとめたガイドラインを、別に用意しています。</p>
@@ -963,5 +984,32 @@ footer a { color: var(--fg-muted); }
 <div class="pagelink"><p>やさしくまとめた<a href="/guide/">利用ガイドライン（Q&amp;A）</a>もあります。</p></div>
 <div class="pagelink"><p>3Dモデルなどのアセットには、<a href="/asset/">アセット利用規約</a>が適用されます。</p></div>
 </main>
+<aside class="toc-right">
+<nav class="toc">
+<p>目次</p>
+<ol>
+<li><a href="#scope">第1条（適用範囲）</a></li>
+<li><a href="#definitions">第2条（定義）</a></li>
+<li><a href="#bundled-files">第3条（同梱物ごとの適用関係）</a></li>
+<li><a href="#agreement">第4条（規約への同意）</a></li>
+<li><a href="#license-grant">第5条（使用許諾）</a></li>
+<li><a href="#prohibited-acts">第6条（禁止事項）</a></li>
+<li><a href="#copyright">第7条（著作権）</a></li>
+<li><a href="#system-requirements">第8条（動作環境）</a></li>
+<li><a href="#safety">第9条（安全上の注意）</a></li>
+<li><a href="#data-handling">第10条（本アプリが取り扱う情報）</a></li>
+<li><a href="#updates-support">第11条（アップデートとサポート）</a></li>
+<li><a href="#no-warranty">第12条（無保証）</a></li>
+<li><a href="#liability">第13条（責任の制限）</a></li>
+<li><a href="#refunds">第14条（返品と返金）</a></li>
+<li><a href="#termination">第15条（使用許諾の終了）</a></li>
+<li><a href="#changes">第16条（この規約の変更）</a></li>
+<li><a href="#general">第17条（その他の取り決め）</a></li>
+<li><a href="#governing-law">第18条（準拠法と裁判管轄）</a></li>
+<li><a href="#contact">第19条（お問い合わせ）</a></li>
+</ol>
+</nav>
+</aside>
+</div>
 </body>
 </html>
