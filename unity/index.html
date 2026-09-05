@@ -381,6 +381,10 @@ nav.toc ol { margin: 0; padding-left: 0; list-style: none; }
 nav.toc li { margin: 0.3rem 0; }
 nav.toc a { color: var(--fg); text-decoration: none; }
 nav.toc a:hover { color: var(--accent); text-decoration: underline; }
+nav.toc ol ol { margin: 0.15rem 0 0.5rem 0.85rem; }
+nav.toc ol ol li { margin: 0.2rem 0; }
+nav.toc ol ol a { color: var(--fg-muted); font-size: 0.85rem; }
+nav.toc ol ol a:hover { color: var(--accent); }
 
 @media (max-width: 68rem) {
   .shell { grid-template-columns: minmax(0, 1fr); gap: 0; max-width: none; }
@@ -989,7 +993,7 @@ footer a { color: var(--fg-muted); }
  </li>
 </ol>
 <hr>
-<p>本規約は、Unity Technologies またはその関連会社が後援し、または提携するものではありません。Unity は、米国およびその他の国における Unity Technologies またはその関連会社の商標または登録商標です。</p>
+<p>本ツールは、Unity Technologies またはその関連会社が後援し、または提携するものではありません。Unity は、米国およびその他の国における Unity Technologies またはその関連会社の商標または登録商標です。</p>
 <p>© 2026 Sangou Studio</p>
 <div class="pagelink"><p>やさしくまとめた<a href="/guide/">利用ガイドライン（Q&amp;A）</a>もあります。</p></div>
 <div class="pagelink"><p>3Dモデルなどのアセットには、<a href="/asset/">アセット利用規約</a>が適用されます。同梱のアプリケーションには、<a href="/app/">アプリケーション利用規約</a>が適用されます。</p></div>
@@ -998,25 +1002,44 @@ footer a { color: var(--fg-muted); }
 <nav class="toc">
 <p>目次</p>
 <ol>
-<li><a href="#scope">第1条（適用範囲）</a></li>
-<li><a href="#definitions">第2条（定義）</a></li>
-<li><a href="#bundled-files">第3条（同梱物ごとの適用関係）</a></li>
-<li><a href="#agreement">第4条（規約への同意）</a></li>
-<li><a href="#license-grant">第5条（使用許諾）</a></li>
-<li><a href="#prohibited-acts">第6条（禁止事項）</a></li>
-<li><a href="#copyright">第7条（著作権）</a></li>
-<li><a href="#system-requirements">第8条（動作環境）</a></li>
-<li><a href="#data-safety">第9条（ファイルの書き換えとデータの保全）</a></li>
-<li><a href="#data-handling">第10条（本ツールが取り扱う情報）</a></li>
-<li><a href="#updates-support">第11条（アップデートとサポート）</a></li>
-<li><a href="#no-warranty">第12条（無保証）</a></li>
-<li><a href="#liability">第13条（責任の制限）</a></li>
-<li><a href="#refunds">第14条（返品と返金）</a></li>
-<li><a href="#termination">第15条（使用許諾の終了）</a></li>
-<li><a href="#changes">第16条（この規約の変更）</a></li>
-<li><a href="#general">第17条（その他の取り決め）</a></li>
-<li><a href="#governing-law">第18条（準拠法と裁判管轄）</a></li>
-<li><a href="#contact">第19条（お問い合わせ）</a></li>
+ <li><a href="#scope">第1条（適用範囲）</a>
+ </li>
+ <li><a href="#definitions">第2条（定義）</a>
+ </li>
+ <li><a href="#bundled-files">第3条（同梱物ごとの適用関係）</a>
+ </li>
+ <li><a href="#agreement">第4条（規約への同意）</a>
+ </li>
+ <li><a href="#license-grant">第5条（使用許諾）</a>
+ </li>
+ <li><a href="#prohibited-acts">第6条（禁止事項）</a>
+ </li>
+ <li><a href="#copyright">第7条（著作権）</a>
+ </li>
+ <li><a href="#system-requirements">第8条（動作環境）</a>
+ </li>
+ <li><a href="#data-safety">第9条（ファイルの書き換えとデータの保全）</a>
+ </li>
+ <li><a href="#data-handling">第10条（本ツールが取り扱う情報）</a>
+ </li>
+ <li><a href="#updates-support">第11条（アップデートとサポート）</a>
+ </li>
+ <li><a href="#no-warranty">第12条（無保証）</a>
+ </li>
+ <li><a href="#liability">第13条（責任の制限）</a>
+ </li>
+ <li><a href="#refunds">第14条（返品と返金）</a>
+ </li>
+ <li><a href="#termination">第15条（使用許諾の終了）</a>
+ </li>
+ <li><a href="#changes">第16条（この規約の変更）</a>
+ </li>
+ <li><a href="#general">第17条（その他の取り決め）</a>
+ </li>
+ <li><a href="#governing-law">第18条（準拠法と裁判管轄）</a>
+ </li>
+ <li><a href="#contact">第19条（お問い合わせ）</a>
+ </li>
 </ol>
 </nav>
 </aside>

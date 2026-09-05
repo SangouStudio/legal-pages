@@ -381,6 +381,10 @@ nav.toc ol { margin: 0; padding-left: 0; list-style: none; }
 nav.toc li { margin: 0.3rem 0; }
 nav.toc a { color: var(--fg); text-decoration: none; }
 nav.toc a:hover { color: var(--accent); text-decoration: underline; }
+nav.toc ol ol { margin: 0.15rem 0 0.5rem 0.85rem; }
+nav.toc ol ol li { margin: 0.2rem 0; }
+nav.toc ol ol a { color: var(--fg-muted); font-size: 0.85rem; }
+nav.toc ol ol a:hover { color: var(--accent); }
 
 @media (max-width: 68rem) {
   .shell { grid-template-columns: minmax(0, 1fr); gap: 0; max-width: none; }
@@ -559,11 +563,11 @@ footer a { color: var(--fg-muted); }
 <p><strong>■ Please note</strong></p>
 <p>If you use our products while wearing VR equipment, make sure you have enough space around you.</p>
 <p>If you feel unwell, stop using them immediately.</p>
-<p>Unity Tools rewrite files in your Unity project directly. There is no undo.</p>
+<p>Some Unity Tools rewrite files in your Unity project directly. There is no undo.</p>
 <p>Please back up your project before you use them.</p>
 <hr>
 <h2 id="common">Common to all</h2>
-<h3>What you can do</h3>
+<h3 id="common-can">What you can do</h3>
 <div class="qa">
 <h4 class="q">Q. Can I use these commercially?</h4>
 <p>A. Yes. Monetized streams and videos, advertising, contract production work, events, and use in your company's business are all fine.</p>
@@ -591,7 +595,7 @@ footer a { color: var(--fg-muted); }
 <h4 class="q">Q. May I keep a backup?</h4>
 <p>A. Please do. <strong>This covers copies you keep yourself only;</strong> you may not leave a copy with anyone else. Even if we stop distributing a product, your right to use what you already obtained remains. Note, however, that depending on the store, re-downloading may become unavailable.</p>
 </div>
-<h3>What you cannot do</h3>
+<h3 id="common-cannot">What you cannot do</h3>
 <div class="qa">
 <h4 class="q">Q. May I give a copy to a friend?</h4>
 <p>A. No. This is the same whether the copy is modified, whether it is a private Discord server, whether you send it to just one person by DM, and whether or not money changes hands. Please send them the link to the distribution page instead.</p>
@@ -600,7 +604,7 @@ footer a { color: var(--fg-muted); }
 <h4 class="q">Q. I no longer need it. May I pass it on to someone?</h4>
 <p>A. No. The same applies to reselling.</p>
 </div>
-<h3>Payment, credit, and support</h3>
+<h3 id="common-money">Payment, credit, and support</h3>
 <div class="qa">
 <h4 class="q">Q. Should I include a credit?</h4>
 <p>A. As a rule, it is optional. We are glad when you include one, but it is not required.</p>
@@ -620,7 +624,7 @@ footer a { color: var(--fg-muted); }
 <h4 class="q">Q. Do you provide support?</h4>
 <p>A. We cannot promise a response, but we do read every inquiry.</p>
 </div>
-<h3>When something stops working</h3>
+<h3 id="common-trouble">When something stops working</h3>
 <div class="qa">
 <h4 class="q">Q. If a VRChat update or similar breaks it, will you fix it?</h4>
 <p>A. We cannot promise that. This is the same for Assets, Unity Tools, and Apps.</p>
@@ -633,7 +637,7 @@ footer a { color: var(--fg-muted); }
 <p>For anything to do with how the store works — logging in, the purchase process, site problems — the store's own help pages or support desk is the reliable route.</p>
 <p>For anything to do with the product itself — the downloaded file won't open, the contents are wrong — please contact us.</p>
 </div>
-<h3>Other</h3>
+<h3 id="common-other">Other</h3>
 <div class="qa">
 <h4 class="q">Q. At what point am I considered to have agreed to the Terms?</h4>
 <p>A. At the point you download or purchase. Please read them before you start using the product.</p>
@@ -661,7 +665,7 @@ footer a { color: var(--fg-muted); }
 </div>
 <hr>
 <h2 id="assets">About Assets</h2>
-<h3>Using and showing</h3>
+<h3 id="assets-use">Using and showing</h3>
 <div class="qa">
 <h4 class="q">Q. May I upload an Asset to VRChat and use it there?</h4>
 <p>A. Yes. Social VR platforms other than VRChat and online games are fine too.</p>
@@ -689,7 +693,7 @@ footer a { color: var(--fg-muted); }
 <h4 class="q">Q. May I use them for political advocacy or religious activities?</h4>
 <p>A. No.</p>
 </div>
-<h3>Modification and compatible data</h3>
+<h3 id="assets-modify">Modification and compatible data</h3>
 <div class="qa">
 <h4 class="q">Q. May I modify Assets?</h4>
 <p>A. Yes. Change the colors, add parts — go ahead.</p>
@@ -709,7 +713,7 @@ footer a { color: var(--fg-muted); }
 <p>A. Yes.</p>
 <p>However, <strong>if you distribute or sell that model, you may not include Sangou Studio's textures or materials in it.</strong></p>
 </div>
-<h3>Creative works</h3>
+<h3 id="assets-works">Creative works</h3>
 <div class="qa">
 <h4 class="q">Q. May I draw and sell illustrations or manga based on an Asset?</h4>
 <p>A. Yes, whether for a fee or free of charge.</p>
@@ -727,7 +731,7 @@ footer a { color: var(--fg-muted); }
 <h4 class="q">Q. May I use them in video works or streams?</h4>
 <p>A. Yes. A credit is optional. However, please include one when selling a paid video work on its own.</p>
 </div>
-<h3>What you cannot do</h3>
+<h3 id="assets-cannot">What you cannot do</h3>
 <div class="qa">
 <h4 class="q">Q. May I set one up as a Public avatar, or let a friend wear it?</h4>
 <p>A. No. Only you may use it.</p>
@@ -742,7 +746,7 @@ footer a { color: var(--fg-muted); }
 </div>
 <hr>
 <h2 id="unity-tools">About Unity Tools</h2>
-<h3>Modification</h3>
+<h3 id="tools-modify">Modification</h3>
 <div class="qa">
 <h4 class="q">Q. May I modify a Unity Tool inside my own project?</h4>
 <p>A. Yes. Please change it freely to suit your workflow. <strong>Taking out only part of a script for your own work is fine as well.</strong> However, you may not take out icons, images, or other embedded materials.</p>
@@ -759,7 +763,7 @@ footer a { color: var(--fg-muted); }
 <h4 class="q">Q. May I show the tool on a stream or in a blog post?</h4>
 <p>A. Please do. You are also free to create and publish introductions or explanations of how to use it.</p>
 </div>
-<h3>What you create</h3>
+<h3 id="tools-output">What you create</h3>
 <div class="qa">
 <h4 class="q">Q. May I include files this tool fixed in a product I sell?</h4>
 <p>A. Yes. The data you create with the tool, and the data the tool rewrites, are yours. <strong>However, any part that contains, as-is, materials or templates that came with the tool is treated separately.</strong> The rights in that part belong to Sangou Studio.</p>
@@ -768,7 +772,7 @@ footer a { color: var(--fg-muted); }
 <h4 class="q">Q. If I receive a refund, do I have to delete what I created?</h4>
 <p>A. No. You only delete the tool itself. What you created remains yours to use.</p>
 </div>
-<h3>Using it in a team</h3>
+<h3 id="tools-team">Using it in a team</h3>
 <div class="qa">
 <h4 class="q">Q. Two of us work on one project. How many copies do we need?</h4>
 <p>A. Two. If several people open Unity while the tool is in the project, please purchase one copy per person.</p>
@@ -781,7 +785,7 @@ footer a { color: var(--fg-muted); }
 <h4 class="q">Q. May we keep the tool in a private repository such as GitHub and share it within our team?</h4>
 <p>A. Yes, provided that <strong>everyone with access has purchased or obtained the tool for themselves from a Sangou Studio product page (on BOOTH or the like).</strong> A copy passed on from someone else, or one obtained from anywhere other than Sangou Studio, does not count. If even one person without it can reach the repository, that counts as redistribution.</p>
 </div>
-<h3>Keeping your data safe</h3>
+<h3 id="tools-data">Keeping your data safe</h3>
 <div class="qa">
 <h4 class="q">Q. Can I undo the changes?</h4>
 <p>A. No. You will need to restore from a backup.</p>
@@ -803,7 +807,7 @@ footer a { color: var(--fg-muted); }
 <h4 class="q">Q. Can I use it on a project inside OneDrive or Dropbox?</h4>
 <p>A. We do not recommend it. If syncing runs while files are being rewritten, a partially written state may be saved. Please move the project out of the synced folder first.</p>
 </div>
-<h3>Environment</h3>
+<h3 id="tools-environment">Environment</h3>
 <div class="qa">
 <h4 class="q">Q. Is it safe to use alongside other assets?</h4>
 <p>A. We cannot test every combination. The combinations we have checked are listed in the manual.</p>
@@ -840,18 +844,43 @@ footer a { color: var(--fg-muted); }
 <li class="row"><span class="label">Terms of Use for Unity Tools</span><span class="pad">　</span><a href="https://legal.sangoustudio.com/unity/en/">https://legal.sangoustudio.com/unity/en/</a></li>
 <li class="row"><span class="label">Application Terms of Use</span><span class="pad">　</span><a href="https://legal.sangoustudio.com/app/en/">https://legal.sangoustudio.com/app/en/</a></li>
 </ul>
-<p>These Guidelines are not sponsored by or affiliated with Unity Technologies or its affiliates. Unity is a trademark or registered trademark of Unity Technologies or its affiliates in the U.S. and elsewhere.</p>
+<p>The works of Sangou Studio are not sponsored by or affiliated with Unity Technologies or its affiliates. Unity is a trademark or registered trademark of Unity Technologies or its affiliates in the U.S. and elsewhere.</p>
 <p>© 2026 Sangou Studio</p>
 </main>
 <aside class="toc-right">
 <nav class="toc">
 <p>Contents</p>
 <ol>
-<li><a href="#three-rules">There are three sets of rules</a></li>
-<li><a href="#common">Common to all</a></li>
-<li><a href="#assets">About Assets</a></li>
-<li><a href="#unity-tools">About Unity Tools</a></li>
-<li><a href="#apps">About Apps</a></li>
+ <li><a href="#three-rules">There are three sets of rules</a>
+ </li>
+ <li><a href="#common">Common to all</a>
+  <ol>
+   <li><a href="#common-can">What you can do</a></li>
+   <li><a href="#common-cannot">What you cannot do</a></li>
+   <li><a href="#common-money">Payment, credit, and support</a></li>
+   <li><a href="#common-trouble">When something stops working</a></li>
+   <li><a href="#common-other">Other</a></li>
+  </ol>
+ </li>
+ <li><a href="#assets">About Assets</a>
+  <ol>
+   <li><a href="#assets-use">Using and showing</a></li>
+   <li><a href="#assets-modify">Modification and compatible data</a></li>
+   <li><a href="#assets-works">Creative works</a></li>
+   <li><a href="#assets-cannot">What you cannot do</a></li>
+  </ol>
+ </li>
+ <li><a href="#unity-tools">About Unity Tools</a>
+  <ol>
+   <li><a href="#tools-modify">Modification</a></li>
+   <li><a href="#tools-output">What you create</a></li>
+   <li><a href="#tools-team">Using it in a team</a></li>
+   <li><a href="#tools-data">Keeping your data safe</a></li>
+   <li><a href="#tools-environment">Environment</a></li>
+  </ol>
+ </li>
+ <li><a href="#apps">About Apps</a>
+ </li>
 </ol>
 </nav>
 </aside>
