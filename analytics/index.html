@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>アクセス解析について ｜ 三号スタジオ</title>
+<meta name="description" content="三号スタジオの説明書サイトで使っているアクセス解析（Google アナリティクス）について説明しています。">
+<style>
+
+:root {
+  color-scheme: light dark;
+  --bg:        #ffffff;
+  --bg-soft:   #f6f8fa;
+  --bg-sunk:   #eef1f4;
+  --fg:        #1f2328;
+  --fg-muted:  #59636e;
+  --line:      #d8dee4;
+  --line-soft: #e6eaef;
+  --accent:    #0a58a8;
+  --accent-bg: #eaf2fb;
+  --radius: 10px;
+  --measure: 44rem;
+  --bar: 3.4rem;       --toc: 15rem;      }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:        #0f1216;
+    --bg-soft:   #171b21;
+    --bg-sunk:   #1d222a;
+    --fg:        #e4e9ee;
+    --fg-muted:  #9aa4af;
+    --line:      #2e353e;
+    --line-soft: #242a32;
+    --accent:    #7cb7f5;
+    --accent-bg: #172231;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Sans",
+               "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--fg);
+  background: var(--bg);
+  overflow-wrap: break-word;
+  word-break: normal;
+  line-break: strict;
+}
+
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+.bar-inner {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 0 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 3.4rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 0.98rem;
+  letter-spacing: 0.01em;
+  color: var(--fg);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.brand img { width: 24px; height: 24px; display: block; flex: none; }
+.brand:hover { color: var(--accent); }
+
+.bar nav { margin-left: auto; }
+
+.bar nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.bar nav a {
+  display: block;
+  padding: 0.35rem 0.7rem;
+  border-radius: 7px;
+  font-size: 0.9rem;
+  color: var(--fg-muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.bar nav a:hover { background: var(--bg-soft); color: var(--fg); }
+.bar nav a[aria-current="page"] {
+  color: var(--accent);
+  background: var(--accent-bg);
+  font-weight: 600;
+}
+
+.langs {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin-left: 0.6rem;
+  padding-left: 0.8rem;
+  border-left: 1px solid var(--line);
+}
+.langs a {
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  font-size: 0.84rem;
+  color: var(--fg-muted);
+  text-decoration: none;
+}
+.langs a:hover { background: var(--bg-soft); color: var(--fg); }
+.langs a[aria-current="true"] { color: var(--fg); font-weight: 700; }
+.langs span {   padding: 0.25rem 0.55rem;
+  font-size: 0.84rem;
+  color: var(--fg-muted);
+  opacity: 0.45;
+}
+
+.menu { display: none; margin-left: auto; }
+.menu > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--fg-muted);
+  font-size: 0.85rem;
+  user-select: none;
+}
+.menu > summary::-webkit-details-marker { display: none; }
+.menu > summary::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 0.72em;
+  margin-right: 0.45rem;
+  vertical-align: -0.05em;
+  border-top: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  background: linear-gradient(currentColor, currentColor) center/100% 2px no-repeat;
+}
+.menu[open] > summary { background: var(--bg-soft); color: var(--fg); }
+
+.menu-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  padding: 0.5rem 1.1rem 0.9rem;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+}
+.menu-panel ul { list-style: none; margin: 0; padding: 0; }
+.menu-panel li { margin: 0; }
+.menu-panel a {
+  display: block;
+  padding: 0.6rem 0.4rem;
+  border-radius: 7px;
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.menu-panel a:hover { background: var(--bg-soft); }
+.menu-panel a[aria-current="page"] { color: var(--accent); font-weight: 600; }
+.menu-panel .langs {
+  margin: 0.5rem 0 0;
+  padding: 0.6rem 0 0;
+  border-left: 0;
+  border-top: 1px solid var(--line-soft);
+}
+
+
+.crumb {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 1rem 1.1rem 0;
+  font-size: 0.86rem;
+  color: var(--fg-dim);
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+.crumb a { color: var(--fg-dim); text-decoration: none; }
+.crumb a:hover { color: var(--accent); text-decoration: underline; }
+.crumb span[aria-hidden] { opacity: 0.55; }
+.crumb [aria-current] { color: var(--fg); }
+.crumb + main { padding-top: 1.1rem; }
+
+@media (max-width: 54rem) {
+  .bar nav { display: none; }
+  .menu { display: block; }
+    .brand-text { display: none; }
+  .bar-inner > .langs { margin-left: auto; }
+}
+
+
+main {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 2.2rem 1.1rem 5rem;
+}
+
+h1 {
+  font-size: 1.55rem;
+  line-height: 1.5;
+  margin: 0 0 1.2rem;
+  letter-spacing: 0.01em;
+}
+
+h2 {
+  font-size: 1.24rem;
+  font-weight: 700;
+  line-height: 1.6;
+  margin: 2.5rem 0 1.1rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--line-soft);
+  scroll-margin-top: 4.2rem;   }
+
+h3 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  margin: 3.4rem 0 0.2rem;
+  color: var(--accent);
+  scroll-margin-top: 4.2rem;
+}
+
+p { margin: 0.85rem 0; }
+
+a { color: var(--accent); text-underline-offset: 0.18em; }
+a:hover { text-decoration: none; }
+
+ol { padding-left: 1.7rem; margin: 0.85rem 0; }
+ol ol { padding-left: 1.5rem; margin: 0.5rem 0; list-style-type: decimal; }
+li { margin: 0.5rem 0; }
+
+hr { border: 0; border-top: 1px solid var(--line-soft); margin: 2.5rem 0; }
+hr + h2 { border-top: 0; padding-top: 0; margin-top: 2.5rem; }
+
+strong { font-weight: 700; }
+
+.meta { overflow-x: auto; margin: 1.2rem 0 0; -webkit-overflow-scrolling: touch; }
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  font-size: 0.94rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+th, td {
+  border-bottom: 1px solid var(--line-soft);
+  padding: 0.6rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.7;
+}
+tr:last-child th, tr:last-child td { border-bottom: 0; }
+th { background: var(--bg-soft); white-space: nowrap; font-weight: 600; }
+.meta td:first-child {
+  white-space: nowrap;
+  background: var(--bg-soft);
+  font-weight: 600;
+  color: var(--fg-muted);
+  border-right: 1px solid var(--line-soft);
+  width: 1%;
+}
+
+blockquote {
+  margin: 1.2rem 0;
+  padding: 0.2rem 0 0.2rem 1.1rem;
+  border-left: 3px solid var(--line);
+  color: var(--fg-muted);
+}
+blockquote p { margin: 0.5rem 0; }
+
+.notice {
+  margin: 1.1rem 0 0;
+  padding: 0.85rem 1rem;
+  background: var(--accent-bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.notice p { margin: 0; }
+.notice p + p { margin-top: 0.5rem; }
+
+ul:has(> li.row) {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 1.1rem;
+  row-gap: 0.35rem;
+  list-style: none;
+  padding-left: 1.7rem;
+  margin: 0.85rem 0;
+}
+li.row { display: contents; }
+li.row .pad { display: none; }
+@media (max-width: 34rem) {
+  ul:has(> li.row) { display: block; }
+  li.row { display: block; margin: 0.7rem 0; }
+  li.row .label { display: block; font-weight: 600; }
+}
+
+.qa { margin: 0; }
+h4.q {
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--fg);
+  margin: 2.4rem 0 0.55rem;
+  scroll-margin-top: 4.2rem;
+}
+.qa p { margin: 0.25rem 0; }
+.qa ul { margin: 0.5rem 0; }
+.qa ul + p { margin-top: 0.5rem; }
+
+main > p:last-child {
+  margin-top: 3rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line-soft);
+  font-size: 0.88rem;
+  color: var(--fg-muted);
+}
+
+
+.shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--toc);
+  gap: 2rem;
+  max-width: 64rem;
+  margin: 0 auto;
+  align-items: start;
+}
+.shell > main { grid-column: 1; grid-row: 1; margin: 0 auto; }
+.shell > .toc-right {
+  grid-column: 2;
+  grid-row: 1;
+  position: sticky;
+  top: var(--bar);
+  max-height: calc(100vh - var(--bar));
+  max-height: calc(100dvh - var(--bar));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 2.2rem 0 3rem;
+}
+
+nav.toc {
+  margin: 0;
+  padding: 1.1rem 1.3rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+}
+nav.toc > p { margin: 0 0 0.6rem; font-weight: 700; font-size: 0.95rem; }
+nav.toc ol { margin: 0; padding-left: 0; list-style: none; }
+nav.toc li { margin: 0.3rem 0; }
+nav.toc a { color: var(--fg); text-decoration: none; }
+nav.toc a:hover { color: var(--accent); text-decoration: underline; }
+nav.toc ol ol { margin: 0.15rem 0 0.5rem 0.85rem; }
+nav.toc ol ol li { margin: 0.2rem 0; }
+nav.toc ol ol a { color: var(--fg-muted); font-size: 0.85rem; }
+nav.toc ol ol a:hover { color: var(--accent); }
+
+@media (max-width: 68rem) {
+  .shell { grid-template-columns: minmax(0, 1fr); gap: 0; max-width: none; }
+  .shell > main { grid-column: 1; grid-row: 2; }
+  .shell > .toc-right {
+    grid-column: 1;
+    grid-row: 1;
+    position: static;
+    max-height: none;
+    overflow: visible;
+    padding: 0 1.1rem;
+  }
+  nav.toc {
+    max-width: var(--measure);
+    margin: 1.8rem auto 0;
+    max-height: 13rem;
+    overflow-y: auto;
+  }
+}
+
+.pagelink {
+  margin: 1.1rem 0 0;
+  padding: 0.85rem 1rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+}
+.pagelink p { margin: 0; }
+
+.cards { list-style: none; margin: 1.2rem 0 0; padding: 0; }
+.cards li { margin: 0.6rem 0; }
+.cards a {
+  display: block;
+  padding: 0.9rem 1.1rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  color: var(--fg);
+  text-decoration: none;
+  font-weight: 600;
+}
+.cards a:hover { border-color: var(--accent); color: var(--accent); }
+.cards .sub { display: block; font-weight: 400; font-size: 0.88rem; color: var(--fg-muted); margin-top: 0.15rem; }
+
+.dates { color: var(--fg-muted); font-size: 0.92rem; margin: 0.3rem 0 0; }
+
+footer {
+  border-top: 1px solid var(--line-soft);
+  margin-top: 4rem;
+  padding: 1.4rem 1.1rem 3rem;
+  font-size: 0.88rem;
+  color: var(--fg-muted);
+}
+footer .footer-inner { max-width: var(--measure); margin: 0 auto; }
+footer p { margin: 0.35rem 0; }
+footer a { color: var(--fg-muted); }
+
+
+@media print {
+  .bar, .menu, .pagelink, .crumb { display: none !important; }
+  body { color: #000; background: #fff; font-size: 10.5pt; line-height: 1.7; }
+  main { max-width: none; padding: 0; }
+  h2 { break-after: avoid; page-break-after: avoid; font-size: 12pt; }
+  li, p, tr { break-inside: avoid; page-break-inside: avoid; }
+  .meta { overflow-x: visible; }
+  table, .notice, nav.toc { border: 1px solid #999; }
+  th, .meta td:first-child { background: transparent; }
+  a { color: #000; text-decoration: none; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; }
+  footer { border-top: 1px solid #999; }
+}
+</style>
+</head>
+<body>
+<header class="bar">
+<div class="bar-inner">
+<a class="brand" href="/"><img src="/assets/mark.png" alt="" width="24" height="24"><span class="brand-text">Sangou Studio Legal</span></a>
+<nav aria-label="pages">
+<ul>
+<li><a href="/asset/">アセット利用規約</a></li>
+<li><a href="/app/">アプリケーション利用規約</a></li>
+<li><a href="/unity/">Unity向けツール利用規約</a></li>
+<li><a href="/guide/">ガイドライン（Q&A）</a></li>
+</ul>
+</nav>
+<div class="langs">
+<a href="/analytics/" aria-current="true">日本語</a>
+<a href="/analytics/en/">English</a>
+</div>
+<details class="menu">
+<summary>Menu</summary>
+<div class="menu-panel">
+<ul>
+<li><a href="/asset/">アセット利用規約</a></li>
+<li><a href="/app/">アプリケーション利用規約</a></li>
+<li><a href="/unity/">Unity向けツール利用規約</a></li>
+<li><a href="/guide/">ガイドライン（Q&A）</a></li>
+</ul>
+<div class="langs">
+<a href="/analytics/" aria-current="true">日本語</a>
+<a href="/analytics/en/">English</a>
+</div>
+</div>
+</details>
+</div>
+</header>
+<nav class="crumb" aria-label="breadcrumb">
+<a href="/">三号スタジオ ライセンス</a><span aria-hidden="true">›</span><span aria-current="page">アクセス解析について</span>
+</nav>
+<main>
+<h1>アクセス解析について</h1>
+<p>三号スタジオでは、説明書の改善のため、説明書サイト（docs.sangoustudio.com）で Google LLC の Google アナリティクスを利用しています。アクセス解析を行うのは、説明書サイトに表示される案内で「許可する」を選んだ場合に限ります。</p>
+<p class="dates">最終改訂日 2026年11月19日</p>
+<h2 id="data">送信される情報</h2>
+<p>アクセス解析を許可すると、次の情報が Google アナリティクスに送信されます。</p>
+<ul>
+<li>閲覧したページの URL とタイトル、参照元の URL</li>
+<li>端末の種類と機種名、ブラウザーと OS の種類とバージョン、画面の解像度、ブラウザーの言語設定</li>
+<li>ページを閲覧した日時</li>
+<li>スクロールや、外部サイトへのリンクのクリックなどの操作</li>
+<li>訪問の回数と、ページを閲覧していた時間</li>
+<li>お使いのブラウザーを識別するための ID。この ID は、名前が <code>_ga</code> で始まる Cookie に保存されます。</li>
+</ul>
+<p>Google アナリティクスは、IP アドレスから市区町村程度の地域を推定します。</p>
+<h2 id="purpose">利用目的</h2>
+<p>どの説明書や章がよく閲覧されているか、どのページで閲覧を終えることが多いか、どの言語版が利用されているかを把握し、説明書の改善に役立てます。</p>
+<h2 id="transfer">送信先と保存期間</h2>
+<p>情報は、三号スタジオが処理を委託している Google LLC（米国）に送信され、お住まいの国や地域の外にあるサーバーで取り扱われることがあります。欧州経済領域（EEA）、英国、スイスから米国への移転は、EU-U.S. データ・プライバシー・フレームワーク（DPF）などに基づきます。Google による情報の取り扱いについては、次のページをご覧ください。</p>
+<ul>
+<li><a href="https://policies.google.com/privacy?hl=ja">Google のプライバシー ポリシー</a></li>
+<li><a href="https://policies.google.com/technologies/partner-sites?hl=ja">Google のサービスを利用するサイトやアプリから収集した情報の取り扱い</a></li>
+</ul>
+<p>Google アナリティクスでの保存期間は、閲覧や操作の個々の記録が2か月、ブラウザーの識別に使うデータが最後の訪問から14か月です。ページごとの閲覧数のような集計した数は、これらの期間の後も残ります。アクセス解析用の Cookie の有効期限は、最後の訪問から最長2年です。</p>
+<h2 id="choice">選び方と取り消し方</h2>
+<p>まだ選択していない場合や、「許可しない」を選んだ場合は、Google アナリティクスを読み込まず、アクセス解析用の Cookie も設定しません。</p>
+<p>選択内容は、お使いのブラウザーに保存されます。選択から1年が経過した場合や、ブラウザーで Cookie やサイトデータを削除した場合は、次に説明書サイトを開いたときに、改めて案内を表示します。</p>
+<p>説明書サイトの各ページの下部にある「アクセス解析の設定」から、いつでも選択を変更できます。許可（同意）を取り消すと、そのブラウザーに保存されている Google アナリティクスの Cookie を削除します。</p>
+<h2 id="rights">法的根拠と権利</h2>
+<p>アクセス解析は、「許可する」を選んでいただいたことによる同意に基づいて行います。許可しなくても、説明書サイトはすべて利用できます。同意を取り消しても、取り消す前に行ったアクセス解析の適法性には影響しません。</p>
+<p>欧州経済領域（EEA）で適用される EU の一般データ保護規則（GDPR）などの法律に基づき、ご自身のデータへのアクセス、訂正、消去、処理の制限、データポータビリティを求めることや、処理に異議を申し立てることができます。ご希望の場合は、下の問い合わせページからご連絡ください。また、お住まいの国や地域のデータ保護監督機関に苦情を申し立てることもできます。</p>
+<h2 id="contact">お問い合わせ</h2>
+<div><p>アクセス解析についてのご質問は、<a href="https://docs.sangoustudio.com/contact/">問い合わせページ</a>からお寄せください。</p></div>
+</main>
+<footer>
+<div class="footer-inner">
+<p>Copyright (c) 2026 Sangou Studio</p>
+</div>
+</footer>
+</body>
+</html>
